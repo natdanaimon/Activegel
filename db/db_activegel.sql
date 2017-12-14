@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2017 at 12:08 PM
+-- Generation Time: Dec 14, 2017 at 12:31 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -219,7 +219,7 @@ CREATE TABLE `tb_popup` (
 --
 
 INSERT INTO `tb_popup` (`s_key`, `s_image`, `s_url`, `d_start`, `d_end`, `d_update`, `s_update_by`, `s_status`) VALUES
-('POPUP', '201711071456301.png', '#', '2017-11-25', '2017-11-30', '2017-11-07 14:57:29', 'admin', 'A');
+('POPUP', '201712141830521.png', '#', '2017-11-25', '2017-11-30', '2017-12-14 18:30:52', 'admin', 'A');
 
 -- --------------------------------------------------------
 
