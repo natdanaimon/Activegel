@@ -111,6 +111,11 @@
         <th>สถานะ</th>
         <en>Status</en> 
     </detail>
+     <detail>
+        <variable>label_status_email</variable>
+        <th>สถานะการส่งอีเมล</th>
+        <en>Status</en> 
+    </detail>
     <detail>
         <variable>edit_info</variable>
         <th>แก้ไขข้อมูล</th>
@@ -770,8 +775,8 @@
     </detail>
     <detail>
         <variable>cus_customer</variable>
-        <th>ข้อมูลลูกค้า</th>
-        <en>Customer</en>
+        <th>ข้อมูลลูกค้า (รับข่าวสาร)</th>
+        <en>Customer (Newsletter)</en>
     </detail>
     
     

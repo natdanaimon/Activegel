@@ -245,7 +245,7 @@ class customerController {
         } else if (!$util->isPhoneNumber($info[s_phone_1])) {
             $return2097 = eregi_replace("field", $_SESSION['lb_setCus_phone1'], $return2097);
             echo $return2097;
-        } else if (!filter_var($info[s_email], FILTER_VALIDATE_EMAIL) && !$util->isEmpty($info[s_email])) {
+        } else if (!filter_var($info[s_email], FILTER_VALIDATE_EMAIL)) {
             echo $_SESSION['cd_2006'];
         } else if ($util->isEmpty($info[status])) {
             $return2099 = eregi_replace("field", $_SESSION['label_status'], $return2099);

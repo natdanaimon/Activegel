@@ -22,7 +22,7 @@ function initialDataTable(first) {
 
                 var col_checkbox = "";
                 var col_picture = '';
-                var col_name = (language == "th" ? item.s_title_th : item.s_title_en) + " " + item.s_firstname + " " + item.s_lastname;
+                var col_name =  item.s_firstname + " " + item.s_lastname;
                 var col_phone = item.s_phone_1;
                 var col_status = "";
                 var col_edit = "";

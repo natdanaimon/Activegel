@@ -120,21 +120,14 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                             <div class="form-body">
 
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <select class="form-control edited bold" id="i_title" name="i_title" style="color:black;font-weight:bold;">
-                                                                <option value="-1"></option>
-                                                            </select>
-                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_title] ?> <span class="required">*</span></label>          
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-5">
+
+                                                    <div class="col-md-6">
                                                         <div class="form-group form-md-line-input has-success">
                                                             <input type="text" class="form-control bold" id="s_firstname" name="s_firstname">
                                                             <label for="form_control_1"><?= $_SESSION[lb_setCus_fname] ?> <span class="required">*</span></label>          
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-6">
                                                         <div class="form-group form-md-line-input has-success">
                                                             <input type="text" class="form-control bold" id="s_lastname"  name="s_lastname">
                                                             <label  for="form_control_1"><?= $_SESSION[lb_setCus_lname] ?> <span class="required">*</span>
@@ -148,7 +141,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                                 </div>
 
                                                 <div class="row">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <div class="form-group form-md-line-input has-success">
                                                             <input type="text" class="form-control bold" id="s_phone_1" name="s_phone_1">
                                                             <label for="form_control_1"><?= $_SESSION[lb_setCus_phone1] ?> <span class="required">*</span>
@@ -159,21 +152,21 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                                             </label>          
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <input type="text" class="form-control bold" id="s_phone_2" name="s_phone_2">
-                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_phone2] ?> <span class="required"></span>
-                                                                <span id="class_val_phone" class="" >
-                                                                    <i id="icon_val_phone" class=""></i>
-                                                                    <span id="lb_val_phone"></span>
-                                                                </span>
-                                                            </label>          
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
+                                                    <!--                                                    <div class="col-md-3">
+                                                                                                            <div class="form-group form-md-line-input has-success">
+                                                                                                                <input type="text" class="form-control bold" id="s_phone_2" name="s_phone_2">
+                                                                                                                <label for="form_control_1"><?= $_SESSION[lb_setCus_phone2] ?> <span class="required"></span>
+                                                                                                                    <span id="class_val_phone" class="" >
+                                                                                                                        <i id="icon_val_phone" class=""></i>
+                                                                                                                        <span id="lb_val_phone"></span>
+                                                                                                                    </span>
+                                                                                                                </label>          
+                                                                                                            </div>
+                                                                                                        </div>-->
+                                                    <div class="col-md-4">
                                                         <div class="form-group form-md-line-input has-success" >
                                                             <input type="text" class="form-control bold" id="s_email" name="s_email">
-                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_email] ?> <span class="required"></span>
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_email] ?> <span class="required">*</span>
                                                                 <span id="class_val_secu" class="" >
                                                                     <i id="icon_val_secu" class=""></i>
                                                                     <span id="lb_val_secu"></span>
@@ -181,7 +174,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                                             </label>          
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <div class="form-group form-md-line-input has-success">
                                                             <input type="text" class="form-control bold" id="s_line" name="s_line">
                                                             <label for="form_control_1"><?= $_SESSION[lb_setCus_line] ?> <span class="required"></span>
@@ -200,7 +193,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                                     <div class="col-md-12">
                                                         <div class="form-group form-md-line-input has-success">
                                                             <input type="text" class="form-control bold" id="s_address" name="s_address">
-                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_address] ?> <span class="required">*</span>
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_address] ?> <span class="required"></span>
                                                                 <span id="class_val_phone" class="" >
                                                                     <i id="icon_val_phone" class=""></i>
                                                                     <span id="lb_val_phone"></span>
@@ -209,49 +202,39 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <select class="form-control edited bold" id="i_province" name="i_province" 
-                                                                    onchange="getDDLAmphure();"
-                                                                    style="color:black;font-weight:bold;">
-                                                                <option value="">กรุณาเลือกข้อมูล</option>
-                                                            </select>
-                                                            <label for="form_control_1"><?= $_SESSION[province] ?> <span class="required">*</span></label>          
+                                                        <div class="portlet light bordered">
+                                                            <div class="portlet-title">
+                                                                <div class="caption font-green">
+                                                                    <i class="fa fa-gears font-green"></i>
+                                                                    <span class="caption-subject bold uppercase"> <?= $_SESSION[label_status_email] ?></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="portlet-body form">
+
+                                                                <div class="form-body">
+
+                                                                    <div class="form-group form-md-line-input has-success " style="margin-bottom: 0px !important;">
+                                                                        <select class="form-control edited bold" id="s_flg_email" name="s_flg_email" style="color:black;font-weight:bold;">
+                                                                            <option value="Y"><?= $_SESSION[active] ?></option>
+                                                                            <option value="N"><?= $_SESSION[inactive] ?></option>
+                                                                        </select>
+                                                                        <label for="form_control_1"><?= $_SESSION[label_status] ?></label>
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <select class="form-control edited bold" id="i_amphure" name="i_amphure" 
-                                                                    onchange="getDDLDistrict()"
-                                                                    style="color:black;font-weight:bold;">
-                                                                <option value="">กรุณาเลือกข้อมูล</option>
-                                                            </select>
-                                                            <label for="form_control_1"><?= $_SESSION[amphure] ?> <span class="required">*</span></label>          
-                                                        </div>
-                                                    </div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-4"></div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <select class="form-control edited bold" id="i_district" name="i_district" 
-                                                                    onchange="getDDLZipcode()"
-                                                                    style="color:black;font-weight:bold;">
-                                                                <option value="">กรุณาเลือกข้อมูล</option>
-                                                            </select>
-                                                            <label for="form_control_1"><?= $_SESSION[district] ?> <span class="required">*</span></label>          
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-md-line-input has-success">
-                                                            <select class="form-control edited bold" id="i_zipcode" name="i_zipcode" style="color:black;font-weight:bold;">
-                                                                <option value="">กรุณาเลือกข้อมูล</option>
-                                                            </select>
-                                                            <label for="form_control_1"><?= $_SESSION[zipcode] ?> <span class="required">*</span></label>          
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+
 
 
 
@@ -450,7 +433,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
 
         <script src="js/action/customer/cus_customerManage.js" type="text/javascript"></script>
         <script>
-                                                                        var keyEdit = "<?= $_GET[id] ?>";
+            var keyEdit = "<?= $_GET[id] ?>";
         </script>
         <script>
             $(document).ready(function () {
