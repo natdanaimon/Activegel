@@ -3,13 +3,13 @@
 include './common/Permission.php';
 include './common/PermissionADM.php';
 include './common/FunctionCheckActive.php';
-ACTIVEPAGES(99, 5);
+ACTIVEPAGES(2, 2);
 
 if ($_GET[func] != NULL) {
-    $tt_header = ($_GET[func] == "add" ? $_SESSION[add_info] : $_SESSION[edit_info]);
+    $tt_header = ($_GET[func] == "add" ? $_SESSION[add_info] : $_SESSION[view_info]);
 }
 if ($_GET[id] == NULL && $_GET[func] != "add") {
-    echo header("Location: set_item.php");
+    echo header("Location: cus_question.php");
 }
 ?>
 <!DOCTYPE html>
@@ -33,8 +33,11 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/jquery-minicolors/jquery.minicolors.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/clockface/css/clockface.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -80,11 +83,11 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
                                 <li>
-                                    <span><?= $_SESSION[setting] ?></span>
+                                    <span><?= $_SESSION[cus_mcustomer] ?></span>
                                     <i class="fa fa-circle" style="color:  #00FF00;"></i>
                                 </li>
                                 <li>
-                                    <a href="set_item.php"><?= $_SESSION[item] ?></a>
+                                    <a href="cus_question.php"><?= $_SESSION[cus_question] ?></a>
                                     <i class="fa fa-circle" style="color:  #00FF00;"></i>
                                 </li>
                                 <li>
@@ -103,104 +106,146 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                             <form enctype="multipart/form-data" name="form-action" id="form-action" method="post">
                                 <input type="hidden" id="func" name="func" value="<?= $_GET[func] ?>"/>
                                 <input type="hidden" id="id" name="id" value="<?= $_GET[id] ?>"/>
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                                     <div class="portlet light bordered">
                                         <div class="portlet-title">
                                             <div class="caption font-green">
-                                                <i class="icon-cog font-green"></i>
-                                                <span class="caption-subject bold uppercase"> <?= $_SESSION[tt_detail] ?></span>
+                                                <i class="icon-user font-green"></i>
+                                                <span class="caption-subject bold uppercase"> <?= $_SESSION[tt_detail_question_1] ?></span>
                                             </div>
                                         </div>
                                         <div class="portlet-body form">
 
                                             <div class="form-body">
 
+                                                <div class="row">
 
-
-
-                                                <div class="form-group form-md-line-input has-success" >
-                                                    <input type="text" class="form-control bold" id="s_code" name="s_code">
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setItem_code] ?> <span class="required">*</span></label>          
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <input type="text" class="form-control bold" id="s_firstname" name="s_firstname">
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_fname] ?> <span class="required">*</span></label>          
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <input type="text" class="form-control bold" id="s_lastname"  name="s_lastname">
+                                                            <label  for="form_control_1"><?= $_SESSION[lb_setCus_lname] ?> <span class="required">*</span>
+                                                                <span id="class_val_username" class="" >
+                                                                    <i id="icon_val_username" class=""></i>
+                                                                    <span id="lb_val_username"></span>
+                                                                </span>
+                                                            </label>          
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group form-md-line-input has-success">
-                                                    <input type="text" class="form-control bold" id="s_item_th" name="s_item_th" >
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setItem_th] ?> <span class="required">*</span></label>          
-                                                </div>
 
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <input type="text" class="form-control bold" id="s_phone_1" name="s_phone_1">
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_phone1] ?> <span class="required">*</span>
+                                                                <span id="class_val_phone" class="" >
+                                                                    <i id="icon_val_phone" class=""></i>
+                                                                    <span id="lb_val_phone"></span>
+                                                                </span>
+                                                            </label>          
+                                                        </div>
+                                                    </div>
 
-
-                                        </div>
-                                    </div>
-
-                                    <!-- END EXAMPLE TABLE PORTLET-->
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                                    <div class="col-md-12">
-                                        <div class="portlet light bordered">
-                                            <div class="portlet-title">
-                                                <div class="caption font-green">
-                                                    <i class="fa fa-gears font-green"></i>
-                                                    <span class="caption-subject bold uppercase"> <?= $_SESSION[label_status] ?></span>
-                                                </div>
-                                            </div>
-                                            <div class="portlet-body form">
-
-                                                <div class="form-body">
-                                                    <div class="form-group form-md-line-input has-success " style="margin-bottom: 0px !important;">
-                                                        <select class="form-control edited bold" id="status" name="status" style="color:black;font-weight:bold;">
-                                                            <option value="-1"></option>
-                                                        </select>
-                                                        <label for="form_control_1"><?= $_SESSION[label_status] ?></label>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group form-md-line-input has-success" >
+                                                            <input type="text" class="form-control bold" id="s_email" name="s_email">
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_email] ?> <span class="required">*</span>
+                                                                <span id="class_val_secu" class="" >
+                                                                    <i id="icon_val_secu" class=""></i>
+                                                                    <span id="lb_val_secu"></span>
+                                                                </span>
+                                                            </label>          
+                                                        </div>
                                                     </div>
 
                                                 </div>
 
 
-                                            </div>
-                                        </div>
-                                    </div>
 
 
-                                    <input type="hidden" name="tmp_image" id="tmp_image">
-                                    <div class="col-md-12" id="div-img1" >
-                                        <div class="portlet light bordered" >
-                                            <div class="portlet-title">
-                                                <div class="caption font-green">
-                                                    <i class="fa fa-image font-green"></i>
-                                                    <span class="caption-subject bold uppercase"> <?= $_SESSION[lb_setItem_image] ?> </span>
-                                                </div>
-                                            </div>
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail"  style="max-width: 200px; max-height: 150px;">
-                                                    <img id="img1" src="images/no-image.png" alt="" style="max-width: 200px; max-height: 150px;"/> </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail"> </div>
-                                                <div>
-                                                    <span class="btn default btn-file">
-                                                        <span class="fileinput-new"> <?= $_SESSION[btn_select_img] ?> </span>
-                                                        <span class="fileinput-exists"> <?= $_SESSION[btn_change] ?> </span>
-                                                        <input type="file" name="s_image" id="s_image"> </span>
 
-                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> <?= $_SESSION[btn_remove] ?> </a>
-                                                </div>
                                             </div>
+
 
                                         </div>
                                     </div>
 
 
+
+
+
+
+
+
+
+                                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-green">
+                                                <i class="fa fa-question-circle font-green"></i>
+                                                <span class="caption-subject bold uppercase"> <?= $_SESSION[tt_detail_question_2] ?></span>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body form">
+
+                                            <div class="form-body">
+
+                                                <div class="row">
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <textarea class="form-control" rows="2" placeholder="Subject more text" id="s_subject"></textarea>
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_subject] ?> <span class="required">*</span></label>          
+                                                        </div>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group form-md-line-input has-success">
+                                                            <textarea class="form-control" rows="6" placeholder="Detail more text" id="s_detail"></textarea>
+                                                            <label for="form_control_1"><?= $_SESSION[lb_setCus_detail] ?> <span class="required">*</span></label>          
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!-- END EXAMPLE TABLE PORTLET-->
 
 
                                     <!-- END EXAMPLE TABLE PORTLET-->
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="portlet-body form">
                                             <div class="form-actions noborder">
-                                                <a href="set_item.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
-                                                <button type="submit"  class="btn blue" ><?= $_SESSION[btn_submit] ?></button>
+                                                <a href="cus_question.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
+
                                             </div>
                                         </div>
                                     </div>
@@ -261,14 +306,21 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
+
+        <script src="../assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+        <script src="js/common/markPattern.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-        <script src="../assets/pages/scripts/components-color-pickers.min.js" type="text/javascript"></script><!-- END PAGE LEVEL SCRIPTS -->
+        <script src="../assets/pages/scripts/components-date-time-pickers.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
@@ -287,7 +339,9 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <!-- END SELECT 2 SCRIPTS -->
         <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
         <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>
-        <script src="js/action/setting/itemManage.js" type="text/javascript"></script>
+
+
+        <script src="js/action/customer/cus_questionManage.js" type="text/javascript"></script>
         <script>
             var keyEdit = "<?= $_GET[id] ?>";
         </script>
@@ -298,6 +352,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                 if (keyEdit == "") {
                     unloading();
                 }
+
             });
         </script>
 

@@ -64,7 +64,7 @@ $_SESSION['mode_lock'] = TRUE;
                     </form>
                 </div>
             </div>
-            <div class="page-footer-custom"> Copyright © 2017 HORGARAGE All rights reserved.   </div>
+            <div class="page-footer-custom"> Copyright © 2018 ACTIVEGEL All rights reserved.   </div>
         </div>
         <!--[if lt IE 9]>
 <script src="../assets/global/plugins/respond.min.js"></script>

@@ -3,7 +3,7 @@
 include './common/Permission.php';
 include './common/PermissionADM.php';
 include './common/FunctionCheckActive.php';
-ACTIVEPAGES(99, 5);
+ACTIVEPAGES(2, 2);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +70,11 @@ ACTIVEPAGES(99, 5);
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
                                 <li>
-                                    <span><?= $_SESSION[setting] ?></span>
+                                    <span><?= $_SESSION[cus_mcustomer] ?></span>
                                     <i class="fa fa-circle" style="color:  #00FF00;"></i>
                                 </li>
                                 <li>
-                                    <a href="set_item.php"><?= $_SESSION[item] ?></a>
+                                    <a href="cus_question.php"><?= $_SESSION[cus_question] ?></a>
                                 </li>
                             </ul>
 
@@ -91,8 +91,8 @@ ACTIVEPAGES(99, 5);
                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
                                         <div class="caption font-dark">
-                                            <i class="icon-settings font-dark"></i>
-                                            <span class="caption-subject bold uppercase"><?= $_SESSION[tt_mg_item] ?></span>
+                                            <i class="icon-users font-dark"></i>
+                                            <span class="caption-subject bold uppercase"><?= $_SESSION[tt_mg_question] ?></span>
                                         </div>
                                         <div class="actions">
 
@@ -105,12 +105,12 @@ ACTIVEPAGES(99, 5);
                                                 
                                                                                                 </div>-->
                                                 <div class="col-md-6" align="left"  <?= $hidden ?>>
-                                                    <div class="btn-group">
-                                                        <a href="set_itemManage.php?func=add">
+<!--                                                    <div class="btn-group">
+                                                        <a href="cus_questionManage.php?func=add">
                                                             <button id="sample_editable_1_new" class="btn sbold green"> <?= $_SESSION[btn_add] ?>
                                                             </button>
                                                         </a>
-                                                    </div>
+                                                    </div>-->
                                                     <div class="btn-group">
                                                         <button id="sample_editable_1_new" class="btn sbold red" onclick="deleteAll()"> <?= $_SESSION[btn_delete_all] ?>
 <!--                                                            <i class="fa fa-minus"></i>-->
@@ -136,11 +136,14 @@ ACTIVEPAGES(99, 5);
                                                                 <span class="box"></span> </label>
                                                         </span>
                                                     </th>
-                                                    <th>  <?= $_SESSION[tb_co_image] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_itemcode] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_itemname] ?> </th>
+
+
+                                                    <th>  <?= $_SESSION[tb_co_subject] ?> </th>
+                                                    <th>  <?= $_SESSION[tb_co_fullname] ?> </th>
+                                                    <th>  <?= $_SESSION[tb_co_phone] ?> </th>
+                                                    <th>  <?= $_SESSION[tb_co_email] ?> </th>
                                                     <th>  <?= $_SESSION[tb_co_status] ?> </th>
-                                                    <th style="width: 40px"> <?= $_SESSION[tb_co_edit] ?> </th>
+                                                    <th style="width: 40px"> <?= $_SESSION[tb_co_view] ?> </th>
                                                     <th style="width: 40px"> <?= $_SESSION[tb_co_delete] ?></th>
                                             </thead>
                                             <tbody>
@@ -209,7 +212,7 @@ ACTIVEPAGES(99, 5);
         <link href="css/notify.css" rel="stylesheet" type="text/css" />
         <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
         <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>
-        <script src="js/action/setting/item.js" type="text/javascript"></script>
+        <script src="js/action/customer/cus_question.js" type="text/javascript"></script>
         <script>
                                                             $(document).ready(function () {
                                                                 initialDataTable("TRUE");

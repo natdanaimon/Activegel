@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2017 at 07:57 AM
+-- Generation Time: Dec 15, 2017 at 11:10 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -28,20 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_customer` (
   `i_customer` int(11) NOT NULL,
-  `s_ref_car` varchar(100) NOT NULL,
-  `i_title` int(11) NOT NULL,
   `s_firstname` varchar(100) NOT NULL,
   `s_lastname` varchar(100) NOT NULL,
   `s_phone_1` varchar(100) NOT NULL,
-  `s_phone_2` varchar(100) NOT NULL,
   `s_email` varchar(100) NOT NULL,
+  `s_flg_email` varchar(10) NOT NULL DEFAULT 'N',
   `s_line` varchar(50) NOT NULL,
   `s_image` varchar(100) NOT NULL,
   `s_address` varchar(200) NOT NULL,
-  `i_district` int(11) NOT NULL,
-  `i_amphure` int(11) NOT NULL,
-  `i_province` int(11) NOT NULL,
-  `i_zipcode` int(11) NOT NULL,
   `d_create` datetime NOT NULL,
   `d_update` datetime NOT NULL,
   `s_create_by` varchar(50) NOT NULL,
@@ -53,9 +47,8 @@ CREATE TABLE `tb_customer` (
 -- Dumping data for table `tb_customer`
 --
 
-INSERT INTO `tb_customer` (`i_customer`, `s_ref_car`, `i_title`, `s_firstname`, `s_lastname`, `s_phone_1`, `s_phone_2`, `s_email`, `s_line`, `s_image`, `s_address`, `i_district`, `i_amphure`, `i_province`, `i_zipcode`, `d_create`, `d_update`, `s_create_by`, `s_update_by`, `s_status`) VALUES
-(4, '', 1, 'ณัฐดนัย', 'มั่นคง', '(086) 361-9979', '(213) 212-1321', 'natdanaimon@gmail.com', 'nagie', 'default.png', '99/99 ม.3 ', 200403, 139, 11, 20150, '2017-10-30 23:27:10', '2017-10-31 00:33:04', 'admin', 'admin', 'A'),
-(5, '', 2, 'ปุญญิสา', 'ทองทิพย์', '(088) 888-8888', '(099) 999-9999', 'test@gmail.com', 'tres', 'default.png', '123123123', 100303, 3, 1, 10530, '2017-12-04 13:54:49', '2017-12-04 13:54:49', 'admin', 'admin', 'A');
+INSERT INTO `tb_customer` (`i_customer`, `s_firstname`, `s_lastname`, `s_phone_1`, `s_email`, `s_flg_email`, `s_line`, `s_image`, `s_address`, `d_create`, `d_update`, `s_create_by`, `s_update_by`, `s_status`) VALUES
+(4, 'ณัฐดนัย', 'มั่นคง', '(086) 361-9979', 'natdanaimon@gmail.com', 'Y', 'nagie', 'default.png', '99/99 ม.3 ', '2017-10-30 23:27:10', '2017-12-15 14:41:48', 'admin', 'admin', 'A');
 
 -- --------------------------------------------------------
 
@@ -221,8 +214,35 @@ CREATE TABLE `tb_position` (
 --
 
 INSERT INTO `tb_position` (`i_position`, `s_detail`, `s_status`) VALUES
-(1, 'สไลด์หน้าแรก', 'A'),
-(2, 'สไลด์หน้าอยากซ่อมอู่', 'C');
+(1, 'สไลด์หน้าแรก', 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_question`
+--
+
+CREATE TABLE `tb_question` (
+  `i_question` int(11) NOT NULL,
+  `s_subject` text NOT NULL,
+  `s_detail` text NOT NULL,
+  `s_firstname` varchar(100) NOT NULL,
+  `s_lastname` varchar(100) NOT NULL,
+  `s_phone_1` varchar(100) NOT NULL,
+  `s_email` varchar(100) NOT NULL,
+  `d_create` datetime NOT NULL,
+  `d_update` datetime NOT NULL,
+  `s_create_by` varchar(50) NOT NULL,
+  `s_update_by` varchar(50) NOT NULL,
+  `s_status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_question`
+--
+
+INSERT INTO `tb_question` (`i_question`, `s_subject`, `s_detail`, `s_firstname`, `s_lastname`, `s_phone_1`, `s_email`, `d_create`, `d_update`, `s_create_by`, `s_update_by`, `s_status`) VALUES
+(9, 'สอบถามข้อมูลเรื่อง product activegel', 'ขอทราบคุณสมบัติของตัวผลิตภัณฑ์หน่อย ?', 'ณัฐดนัย', 'มั่นคง', '0863619979', 'natdanaimon@gmail.com', '2017-12-15 00:00:00', '2017-12-15 00:00:00', 'ADM', 'ADM', 'U');
 
 -- --------------------------------------------------------
 
@@ -263,7 +283,9 @@ CREATE TABLE `tb_status` (
 
 INSERT INTO `tb_status` (`s_status`, `s_type`, `s_detail_th`, `s_detail_en`) VALUES
 ('A', 'ACTIVE', 'ใช้งาน', 'Active'),
-('C', 'ACTIVE', 'ยกเลิก', 'Cancel');
+('C', 'ACTIVE', 'ยกเลิก', 'Cancel'),
+('R', 'MAIL', 'เปิดอ่านแล้ว', 'Readed'),
+('U', 'MAIL', 'ไม่ได้อ่าน', 'Unread');
 
 -- --------------------------------------------------------
 
@@ -305,7 +327,6 @@ INSERT INTO `tb_user` (`i_user`, `s_user`, `s_pass`, `s_firstname`, `s_lastname`
 --
 ALTER TABLE `tb_customer`
   ADD PRIMARY KEY (`i_customer`),
-  ADD KEY `index_address` (`i_district`,`i_amphure`,`i_province`,`i_zipcode`),
   ADD KEY `index_customer_search` (`s_status`);
 
 --
@@ -351,6 +372,13 @@ ALTER TABLE `tb_position`
   ADD KEY `index_tb_position` (`s_status`);
 
 --
+-- Indexes for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  ADD PRIMARY KEY (`i_question`),
+  ADD KEY `index_customer_search` (`s_status`);
+
+--
 -- Indexes for table `tb_slide`
 --
 ALTER TABLE `tb_slide`
@@ -378,7 +406,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_customer`
 --
 ALTER TABLE `tb_customer`
-  MODIFY `i_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `i_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tb_event`
 --
@@ -404,6 +432,11 @@ ALTER TABLE `tb_partner_comp`
 --
 ALTER TABLE `tb_position`
   MODIFY `i_position` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tb_question`
+--
+ALTER TABLE `tb_question`
+  MODIFY `i_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `tb_slide`
 --

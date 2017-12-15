@@ -3,11 +3,11 @@ var $datatable = $('#datatable');
 function initialDataTable(first) {
     $.ajax({
         type: 'GET',
-        url: 'controller/customer/customerController.php?func=dataTable',
-        beforeSend: function() {
+        url: 'controller/customer/questionController.php?func=dataTable',
+        beforeSend: function () {
             $('#se-pre-con').fadeIn(100);
         },
-        success: function(data) {
+        success: function (data) {
             if (data == '') {
                 var datatable = $datatable.dataTable().api();
                 $('.dataTables_empty').remove();
@@ -18,12 +18,13 @@ function initialDataTable(first) {
             }
             var res = JSON.parse(data);
             var JsonData = [];
-            $.each(res, function(i, item) {
+            $.each(res, function (i, item) {
 
                 var col_checkbox = "";
-                var col_picture = '';
-                var col_name = (language == "th" ? item.s_title_th : item.s_title_en) + " " + item.s_firstname + " " + item.s_lastname;
+                var col_subject = item.s_subject;
+                var col_name = item.s_firstname + " " + item.s_lastname;
                 var col_phone = item.s_phone_1;
+                var col_email = item.s_email;
                 var col_status = "";
                 var col_edit = "";
                 var col_delete = "";
@@ -33,7 +34,7 @@ function initialDataTable(first) {
                 //                    col_checkbox += ' </label>';
                 col_checkbox = '<span class="md-checkbox has-success" style="padding-right: 0px;">';
                 col_checkbox += '  <input type="checkbox" id="checkbox_' + i + '" name="checkboxItem" class="md-check"';
-                col_checkbox += '  value="' + item.i_customer + '" onclick=remove_select_all("checkbox_' + i + '")>';
+                col_checkbox += '  value="' + item.i_question + '" onclick=remove_select_all("checkbox_' + i + '")>';
                 col_checkbox += '  <label for="checkbox_' + i + '">';
                 col_checkbox += '    <span class="inc"></span>';
                 col_checkbox += '    <span class="check"></span>';
@@ -41,13 +42,7 @@ function initialDataTable(first) {
                 col_checkbox += '</span>';
 
 
-                if (item.s_image != "") {
-                    col_picture = '<a title="' + item.s_image + '" class="example-image-link" href="upload/customer/' + item.s_image + '" data-lightbox="example-' + item.i_customer +
-                        '">';
-                    col_picture += '<img class="example-image" src="upload/customer/' + item.s_image + '" width="32px" height="32px"  />';
-                    col_picture += '</a>';
-                }
-
+         
 
 
                 col_status = '';
@@ -55,11 +50,11 @@ function initialDataTable(first) {
                 col_status += '';
 
 
-                col_edit += '<a href="cus_customerManage.php?func=edit&id=' + item.i_customer + '" class="btn btn-circle btn-icon-only blue" style="width:32px;height:32px">';
+                col_edit += '<a href="cus_questionManage.php?func=edit&id=' + item.i_question + '" class="btn btn-circle btn-icon-only blue" style="width:32px;height:32px">';
                 col_edit += ' <i class="fa fa-edit"></i>';
                 col_edit += '</a>';
 
-                col_delete += '<a href="' + (disable != "" ? '#' : 'javascript:Confirm(\'' + item.i_customer + '\',\'delete\');') + '" style="width:33px;height:33px" class="btn btn-circle btn-icon-only red" ' + disable + '>';
+                col_delete += '<a href="' + (disable != "" ? '#' : 'javascript:Confirm(\'' + item.i_question + '\',\'delete\');') + '" style="width:33px;height:33px" class="btn btn-circle btn-icon-only red" ' + disable + '>';
                 col_delete += ' <i class="fa fa-trash-o" ></i>';
                 col_delete += '</a>';
 
@@ -67,9 +62,10 @@ function initialDataTable(first) {
 
                 var addRow = [
                     col_checkbox,
-                    col_picture,
+                    col_subject,
                     col_name,
                     col_phone,
+                    col_email,
                     col_status,
                     col_edit,
                     col_delete
@@ -86,7 +82,7 @@ function initialDataTable(first) {
                         [2, 'asc']
                     ],
                     columnDefs: [
-                        { "orderable": false, "targets": 0 }
+                        {"orderable": false, "targets": 0}
                     ]
                 });
             } else {
@@ -101,7 +97,7 @@ function initialDataTable(first) {
             $('#se-pre-con').delay(100).fadeOut();
 
         },
-        error: function(data) {
+        error: function (data) {
 
         }
 
@@ -109,40 +105,40 @@ function initialDataTable(first) {
 }
 
 function colorStatus(status) {
-    if (status == "A") {
+    if (status == "R") {
         return "success";
-    } else if (status == "C") {
+    } else if (status == "U") {
         return "danger";
     }
 }
 
 function sortHidden(status) {
-    if (status == "A") {
+    if (status == "U") {
         return "<span style='display:none;'>1</span>";
-    } else if (status == "C") {
+    } else if (status == "R") {
         return "<span style='display:none;'>2</span>";
     }
 }
 
 
-$('#checkbox14').click(function() {
+$('#checkbox14').click(function () {
     var checkboxes = $('input[name$=checkboxItem]');
     var array = [];
-    $('input[name$="checkboxItem"]').each(function() {
+    $('input[name$="checkboxItem"]').each(function () {
         array.push($(this).attr('id'));
     });
     if ($(this).is(':checked')) {
         checkboxes.prop('checked', true);
         var names = [];
         names = jQuery.unique(array);
-        $.each(names, function(key, value) {
+        $.each(names, function (key, value) {
             $('input:checkbox[id=' + value + ']').attr('checked', true);
         });
     } else {
         checkboxes.prop('checked', false);
         var names = [];
         names = jQuery.unique(array);
-        $.each(names, function(key, value) {
+        $.each(names, function (key, value) {
             $('input:checkbox[id=' + value + ']').attr('checked', false);
         });
     }
@@ -155,12 +151,12 @@ function remove_select_all(id) {
 
         //set element select all selected
         var array = [];
-        $('input[name$="checkboxItem"]').each(function() {
+        $('input[name$="checkboxItem"]').each(function () {
             array.push($(this).attr('id'));
         });
         var names = [];
         names = jQuery.unique(array);
-        $.each(names, function(key, value) {
+        $.each(names, function (key, value) {
             if ($("#" + value).is(':checked')) {
                 selected.push($("#" + value).val());
             }
@@ -182,14 +178,14 @@ function deleteAll() {
     $('#se-pre-con').fadeIn(100);
     $.notify.addStyle('foo', {
         html: "<div>" +
-            "<div class='clearfix'>" +
-            "<div class='title' data-notify-html='title'/>" +
-            "<div class='buttons'>" +
-            "<button class='notify-all-no btn red'>" + cancel + "</button>" +
-            "<button class='notify-all-yes btn green'>" + yes + "</button>" +
-            "</div>" +
-            "</div>" +
-            "</div>"
+                "<div class='clearfix'>" +
+                "<div class='title' data-notify-html='title'/>" +
+                "<div class='buttons'>" +
+                "<button class='notify-all-no btn red'>" + cancel + "</button>" +
+                "<button class='notify-all-yes btn green'>" + yes + "</button>" +
+                "</div>" +
+                "</div>" +
+                "</div>"
     });
 
     $.notify({
@@ -202,20 +198,20 @@ function deleteAll() {
     });
 
 }
-$(document).on('click', '.notifyjs-foo-base .notify-all-no', function() {
+$(document).on('click', '.notifyjs-foo-base .notify-all-no', function () {
     $('#se-pre-con').delay(100).fadeOut();
     $(this).trigger('notify-hide');
 });
-$(document).on('click', '.notifyjs-foo-base .notify-all-yes', function() {
+$(document).on('click', '.notifyjs-foo-base .notify-all-yes', function () {
     $(this).trigger('notify-hide');
     var selected = [];
     var array = [];
-    $('input[name$="checkboxItem"]').each(function() {
+    $('input[name$="checkboxItem"]').each(function () {
         array.push($(this).attr('id'));
     });
     var names = [];
     names = jQuery.unique(array);
-    $.each(names, function(key, value) {
+    $.each(names, function (key, value) {
         if ($("#" + value).is(':checked')) {
             //alert($("#" + value).val());
             selected.push($("#" + value).val());
@@ -226,12 +222,12 @@ $(document).on('click', '.notifyjs-foo-base .notify-all-yes', function() {
 
     $.ajax({
         type: 'GET',
-        url: 'controller/customer/customerController.php',
-        data: { data: jsonData, func: "deleteAll" },
-        beforeSend: function() {
+        url: 'controller/customer/questionController.php',
+        data: {data: jsonData, func: "deleteAll"},
+        beforeSend: function () {
             $('#se-pre-con').fadeIn(100);
         },
-        success: function(data) {
+        success: function (data) {
 
             var res = data.split(",");
             if (res[0] == "0000") {
@@ -245,7 +241,7 @@ $(document).on('click', '.notifyjs-foo-base .notify-all-yes', function() {
             $('#se-pre-con').delay(100).fadeOut();
             initialDataTable("FALSE");
         },
-        error: function(data) {
+        error: function (data) {
 
         }
 
@@ -262,12 +258,12 @@ function edit() {
     $.ajax({
         type: 'GET',
         url: 'controller/depositController.php?func=getInfo&id=' + keyEdit,
-        beforeSend: function() {
+        beforeSend: function () {
             //$('#se-pre-con').fadeIn(100);
         },
-        success: function(data) {
+        success: function (data) {
             var res = JSON.parse(data);
-            $.each(res, function(i, item) {
+            $.each(res, function (i, item) {
                 debugger;
                 $("#s_username").val(item.s_username);
                 $("#s_firstname").val(item.s_firstname);
@@ -297,7 +293,7 @@ function edit() {
             //            $('#se-pre-con').delay(100).fadeOut();
 
         },
-        error: function(data) {
+        error: function (data) {
 
         }
 
@@ -314,16 +310,16 @@ function Confirm(txt, func) {
     $('#se-pre-con').fadeIn(100);
     $.notify.addStyle('foo', {
         html: "<div>" +
-            "<div class='clearfix'>" +
-            "<div class='title' data-notify-html='title'/>" +
-            "<div class='buttons'>" +
-            "<input type='hidden' id='id' value='" + txt + "' />" +
-            "<input type='hidden' id='func' value='" + func + "' />" +
-            "<button class='notify-no btn red'>" + cancel + "</button>" +
-            "<button class='notify-yes btn green'>" + yes + "</button>" +
-            "</div>" +
-            "</div>" +
-            "</div>"
+                "<div class='clearfix'>" +
+                "<div class='title' data-notify-html='title'/>" +
+                "<div class='buttons'>" +
+                "<input type='hidden' id='id' value='" + txt + "' />" +
+                "<input type='hidden' id='func' value='" + func + "' />" +
+                "<button class='notify-no btn red'>" + cancel + "</button>" +
+                "<button class='notify-yes btn green'>" + yes + "</button>" +
+                "</div>" +
+                "</div>" +
+                "</div>"
     });
 
     $.notify({
@@ -336,22 +332,22 @@ function Confirm(txt, func) {
     });
 
 }
-$(document).on('click', '.notifyjs-foo-base .notify-no', function() {
+$(document).on('click', '.notifyjs-foo-base .notify-no', function () {
     $('#se-pre-con').delay(100).fadeOut();
     $(this).trigger('notify-hide');
 });
-$(document).on('click', '.notifyjs-foo-base .notify-yes', function() {
+$(document).on('click', '.notifyjs-foo-base .notify-yes', function () {
     $(this).trigger('notify-hide');
     var id = $("#id").val();
     var func = $("#func").val();
 
     $.ajax({
         type: 'GET',
-        url: 'controller/customer/customerController.php?func=' + func + '&id=' + id,
-        beforeSend: function() {
+        url: 'controller/customer/questionController.php?func=' + func + '&id=' + id,
+        beforeSend: function () {
             $('#se-pre-con').fadeIn(100);
         },
-        success: function(data) {
+        success: function (data) {
 
             var res = data.split(",");
             if (res[0] == "0000") {
@@ -365,7 +361,7 @@ $(document).on('click', '.notifyjs-foo-base .notify-yes', function() {
             $('#se-pre-con').delay(100).fadeOut();
             initialDataTable("FALSE");
         },
-        error: function(data) {
+        error: function (data) {
 
         }
 

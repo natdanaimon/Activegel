@@ -10,10 +10,9 @@ function notification() {
             //debugger;
 //            alert(1);
             if (data == '') {
-                $('#noti-nagieos-bet').text("");
-                $('#noti-register').text("");
-                $('#noti-deposit').text("");
-                $('#noti-withdraw').text("");
+                $('#noti-customer').text("");
+                $('#noti-question').text("");
+
                 $('#count-noti-h').text("");
                 $('#count-noti-d').text("");
                 $('#css_count-noti-h').attr("class", "");
@@ -23,9 +22,8 @@ function notification() {
             }
             var res = JSON.parse(data);
             var count = 0;
-            var regis = 0;
-            var deposit = 0;
-            var withdraw = 0;
+            var newsletter = 0;
+
             var pxRow = 55;
 //            debugger;
             $("#ul-ddl-noti-d").empty();
@@ -42,9 +40,9 @@ function notification() {
                 $("#ul-ddl-noti-d").append(li);
                 count++;
 
-                regis += noti_regis(item.act);
-                deposit += noti_dp(item.act);
-                withdraw += noti_wd(item.act);
+                newsletter += noti_newsletter(item.act);
+//                deposit += noti_dp(item.act);
+//                withdraw += noti_wd(item.act);
 
 
 
@@ -59,19 +57,18 @@ function notification() {
             $("#ul-ddl-noti-d").attr("style", "height:255px");
 
             //left menu
-            var nagie_bet = regis + deposit + withdraw;
-            $('#noti-nagieos-bet').text((nagie_bet > 0 ? nagie_bet : ""));
-            $('#noti-register').text((regis > 0 ? regis : ""));
-            $('#noti-deposit').text((deposit > 0 ? deposit : ""));
-            $('#noti-withdraw').text((withdraw > 0 ? withdraw : ""));
+            var nagie_bet = newsletter;
+
+            $('#noti-question').text((newsletter > 0 ? newsletter : ""));
+            $('#noti-customer').text((nagie_bet > 0 ? nagie_bet : ""));
 
             //sound
             if (count > 0) {
                 var x = document.getElementById("NotiAudio");
-                x.play();
+//                x.play();
 
             }
-          
+
 
         },
         error: function (data) {
@@ -81,35 +78,33 @@ function notification() {
     });
 
     function noti_label_bs3(act) {
-        if (act == "REG") {
-            return "label-success";
-        } else if (act == "DP") {
-            return "label-info";
-        } else if (act == "WD") {
-            return "label-warning";
+//        if (act == "REG") {
+//            return "label-success";
+//        } else if (act == "DP") {
+//            return "label-info";
+//        } else 
+        if (act == "QUEST") {
+            return "label-danger";
         }
     }
     function noti_icon(act) {
-        if (act == "REG") {
-            return "fa-user";
-        } else if (act == "DP") {
-            return "fa-bell-o";
-        } else if (act == "WD") {
+//        if (act == "REG") {
+//            return "fa-user";
+//        } else if (act == "DP") {
+//            return "fa-bell-o";
+//        } else 
+        if (act == "QUEST") {
             return "fa-bell-o";
         }
     }
     function noti_link(act) {
-        if (act == "REG") {
-            return "cs_register.php";
-        } else if (act == "DP") {
-            return "cs_deposit.php";
-        } else if (act == "WD") {
-            return "cs_withdraw.php";
+        if (act == "QUEST") {
+            return "cus_question.php";
         }
     }
 
-    function noti_regis(act) {
-        if (act == "REG") {
+    function noti_newsletter(act) {
+        if (act == "QUEST") {
             return 1;
         } else {
             return 0;

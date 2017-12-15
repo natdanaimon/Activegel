@@ -111,7 +111,7 @@
         <th>สถานะ</th>
         <en>Status</en> 
     </detail>
-     <detail>
+    <detail>
         <variable>label_status_email</variable>
         <th>สถานะการส่งอีเมล</th>
         <en>Status</en> 
@@ -779,7 +779,11 @@
         <en>Customer (Newsletter)</en>
     </detail>
     
-    
+    <detail>
+        <variable>cus_question</variable>
+        <th>ข้อมูลลูกค้า (สอบถาม)</th>
+        <en>Customer (Question)</en>
+    </detail>
     
     <detail>
         <variable>set_year</variable>
@@ -1275,6 +1279,16 @@
         <en>DETAIL</en>
     </detail>
     <detail>
+        <variable>tt_detail_question_1</variable>
+        <th>รายละเอียดผู้ติดต่อ</th>
+        <en>DETAIL CONTACTS</en>
+    </detail>
+    <detail>
+        <variable>tt_detail_question_2</variable>
+        <th>รายละเอียดข้อมูลการสอบถาม</th>
+        <en>DETAIL QUESTION DETAIL</en>
+    </detail>
+    <detail>
         <variable>tt_detail_cmail</variable>
         <th>ตั้งค่าอีเมล</th>
         <en>Config Email</en>
@@ -1431,8 +1445,13 @@
     </detail>
     <detail>
         <variable>tt_mg_customer</variable>
-        <th>จัดการข้อมูลลูกค้า</th>
-        <en>MANAGE CUSTOMER</en>
+        <th>จัดการข้อมูลลูกค้า (รับข่าวสาร)</th>
+        <en>MANAGE CUSTOMER (NEWSLETTER)</en>
+    </detail>
+    <detail>
+        <variable>tt_mg_question</variable>
+        <th>จัดการข้อมูลลูกค้า (สอบถาม)</th>
+        <en>MANAGE CUSTOMER (QUESTION)</en>
     </detail>
     <detail>
         <variable>tt_mg_inbound</variable>

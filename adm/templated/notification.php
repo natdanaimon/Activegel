@@ -1,7 +1,7 @@
 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
         <i class="icon-bell"></i>
-        <span class="" id="css_count-noti-h"> <span id="count-noti-h"></span> </span>
+        <span style="padding: 1px 8px !important;" id="css_count-noti-h"> <span id="count-noti-h"></span> </span>
     </a>
     <ul id="ul-ddl-noti" class="dropdown-menu">
         <li class="external">
@@ -45,7 +45,7 @@
             ;  // add zero in front of numbers < 10
             return i;
         }
-//        currentTime();
+        currentTime();
 
 
 //        var sec = 3;

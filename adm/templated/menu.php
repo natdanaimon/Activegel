@@ -27,6 +27,7 @@
                 <i class="fa fa-user"></i>
                 <span class="title">R2. <?= $_SESSION[cus_mcustomer] ?></span>
                 <span class="selected"></span>
+                <span style="padding: 1px 8px !important;" class="badge badge-danger" id="noti-customer"></span>
             </a>
             <ul class="sub-menu">
                 <li class="nav-item  <?= $_SESSION["nav_sub_cus_customer"] ?>">
@@ -35,6 +36,14 @@
                         <span class="title"><?= $_SESSION[cus_customer] ?></span>
                         <span class="selected"></span>
                         <span class="badge badge-success" ></span>
+                    </a>
+                </li>
+                <li class="nav-item  <?= $_SESSION["nav_sub_cus_question"] ?>">
+                    <a href="cus_question.php" class="nav-link ">
+
+                        <span class="title"><?= $_SESSION[cus_question] ?></span>
+                        <span class="selected"></span>
+                        <span style="padding: 1px 8px !important;" class="badge badge-success" id="noti-question"></span>
                     </a>
                 </li>
             </ul>
@@ -69,6 +78,7 @@
                         <span class="badge badge-success" ></span>
                     </a>
                 </li>
+
 
 
 

@@ -203,6 +203,20 @@
         <th>ที่อยู่</th>
         <en>Address</en>
     </detail> 
+    
+    
+    
+     <detail>
+        <variable>lb_setCus_subject</variable>
+        <th>หัวข้อการสอบถาม</th>
+        <en>Subject Question</en>
+    </detail> 
+    
+     <detail>
+        <variable>lb_setCus_detail</variable>
+        <th>รายละเอียด</th>
+        <en>Deail Question</en>
+    </detail> 
     <!--  customer -->
     
     

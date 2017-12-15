@@ -18,11 +18,7 @@ class notificationService {
         $db = new ConnectDB();
         $strSql = "";
         $strSql .= "select * from ( ";
-        $strSql .= "select 'CS' as 'app' , 'REG' as 'act' , s_status ,'$_SESSION[noti_reg]' as 'text' , d_create as time from tb_cs_user WHERE s_status = 'PEND' ";
-        $strSql .= "UNION ALL ";
-        $strSql .= "select 'CS' as 'app' , 'DP' as 'act' , s_status  ,'$_SESSION[noti_dp]' as 'text' ,d_create as time from tb_cs_dp  WHERE s_status = 'PEND' AND s_first_deposit = 'N' ";
-        $strSql .= "UNION ALL ";
-        $strSql .= "select 'CS' as 'app' , 'WD' as 'act' ,s_status   ,'$_SESSION[noti_wd]' as 'text' , d_create as time from tb_cs_wd  WHERE s_status = 'PEND' ";
+        $strSql .= "select 'QUESTION' as 'app' , 'QUEST' as 'act' , s_subject  as 'text' , d_create as time from tb_question WHERE s_status = 'U' ";
         $strSql .= " ) noti order by time desc ";
         $_data = $db->Search_Data_FormatJson($strSql);
         $db->close_conn();
