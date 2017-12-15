@@ -893,7 +893,11 @@
         <th>ตั้งค่าประกันภัยภาคบังคับ</th>
         <en>Config Compulsory</en>
     </detail>
-	
+    <detail>
+        <variable>ui_event</variable>
+        <th>จัดการข้อมูลอีเว้น</th>
+        <en>Event</en>
+    </detail>
     <!--  Menu -->
     
     
@@ -1504,6 +1508,11 @@
         <th>จัดการข้อมูลข่าว</th>
         <en>MANAGE NEWS</en>
     </detail>
+    <detail>
+        <variable>tt_mg_event</variable>
+        <th>จัดการข้อมูลอีเว้น</th>
+        <en>MANAGE EVENT</en>
+    </detail>s
     <detail>
         <variable>tt_mg_promotion</variable>
         <th>จัดการข้อมูลโปรโมชั่น</th>

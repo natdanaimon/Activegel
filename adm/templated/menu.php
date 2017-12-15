@@ -48,144 +48,16 @@
 
 
 
-        <!--R8 ตั้งค่า-->
-        <li class="nav-item <?= $_SESSION["nav_main_setting"] ?>">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-cog"></i>
-                <span class="title">R8. <?= $_SESSION[setting] ?></span>
-                <span class="selected"></span>
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_vat"] ?>">
-                    <a href="set_vat.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[vat] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_dmg"] ?>">
-                    <a href="set_dmg.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[level_dmg] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_daily"] ?>">
-                    <a href="set_daily.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[daily_record] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li> 
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_item"] ?>">
-                    <a href="set_item.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[item] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_comp_insurance"] ?>">
-                    <a href="set_compInsurance.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[comp_insurance] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_comp_partner"] ?>">
-                    <a href="set_compPartner.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[comp_partner] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_department"] ?>">
-                    <a href="set_department.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[department] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_autoassessment"] ?>">
-                    <a href="set_auto.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[autoassessment] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_cmail"] ?>">
-                    <a href="set_mail.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[set_cmail] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_compu"] ?>">
-                    <a href="set_compulsory.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[set_compu] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
 
 
 
 
 
-                <li class="heading">
-                    <h3 class="uppercase"></h3>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_year"] ?>">
-                    <a href="set_caryear.php" class="nav-link ">
-                        <span class="title"><?= $_SESSION[set_year] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_brand"] ?>">
-                    <a href="set_carbrand.php" class="nav-link ">
-                        <span class="title"><?= $_SESSION[set_brand] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_gen"] ?>">
-                    <a href="set_cargeneration.php" class="nav-link ">
-                        <span class="title"><?= $_SESSION[set_generation] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_sub"] ?>">
-                    <a href="set_carsub.php" class="nav-link ">
-                        <span class="title"><?= $_SESSION[set_sub] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_set_map"] ?>">
-                    <a href="set_carmapping.php" class="nav-link ">
-                        <span class="title"><?= $_SESSION[set_mapping] ?></span>
-                        <span class="selected"></span>
-                        <span class="badge badge-success" ></span>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <!--R8 ตั้งค่า-->
-
-
-
-        
-        <!--R9 บริหารจัดการข้อมูลพนักงาน-->
+        <!--R3 บริหารจัดการข้อมูลพนักงาน-->
         <li class="nav-item <?= $_SESSION["nav_main_emp"] ?>">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-users"></i>
-                <span class="title">R9. <?= $_SESSION[emp_manage] ?></span>
+                <span class="title">R3. <?= $_SESSION[emp_manage] ?></span>
                 <span class="selected"></span>
             </a>
             <ul class="sub-menu">
@@ -203,7 +75,7 @@
 
             </ul>
         </li>
-        <!--R9 บริหารจัดการข้อมูลพนักงาน-->
+        <!--R3 บริหารจัดการข้อมูลพนักงาน-->
 
 
 
@@ -219,11 +91,11 @@
 
 
 
-        <!--R14 บริหารจัดการหน้าจอเว็บไซต์-->
+        <!--R4 บริหารจัดการหน้าจอเว็บไซต์-->
         <li class="nav-item <?= $_SESSION["nav_main_ui"] ?>">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-television"></i>
-                <span class="title">R14. <?= $_SESSION[ui_management] ?></span>
+                <span class="title">R4. <?= $_SESSION[ui_management] ?></span>
                 <span class="selected"></span>
             </a>
             <ul class="sub-menu">
@@ -242,27 +114,14 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_ui_knowledge"] ?>">
-                    <a href="ui_knowledge.php" class="nav-link ">
+                <li class="nav-item  <?= $_SESSION["nav_sub_ui_event"] ?>">
+                    <a href="ui_event.php" class="nav-link ">
 
-                        <span class="title"><?= $_SESSION[ui_knowledge] ?></span>
+                        <span class="title"><?= $_SESSION[ui_event] ?></span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_ui_promotion"] ?>">
-                    <a href="ui_promotion.php" class="nav-link ">
 
-                        <span class="title"><?= $_SESSION[ui_promotion] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
-                <li class="nav-item  <?= $_SESSION["nav_sub_ui_portfolio"] ?>">
-                    <a href="ui_portfolio.php" class="nav-link ">
-
-                        <span class="title"><?= $_SESSION[ui_portfolio] ?></span>
-                        <span class="selected"></span>
-                    </a>
-                </li>
                 <li class="nav-item  <?= $_SESSION["nav_sub_ui_popup"] ?>">
                     <a href="ui_popup.php" class="nav-link ">
 
@@ -275,10 +134,40 @@
 
             </ul>
         </li>
-        <!--R14 บริหารจัดการหน้าจอเว็บไซต์-->
+        <!--R4 บริหารจัดการหน้าจอเว็บไซต์-->
+
+        <!--R5 ตั้งค่า-->
+        <li class="nav-item <?= $_SESSION["nav_main_setting"] ?>">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-cog"></i>
+                <span class="title">R5. <?= $_SESSION[setting] ?></span>
+                <span class="selected"></span>
+            </a>
+            <ul class="sub-menu">
+
+
+                <li class="nav-item  <?= $_SESSION["nav_sub_set_comp_partner"] ?>">
+                    <a href="set_compPartner.php" class="nav-link ">
+
+                        <span class="title"><?= $_SESSION[comp_partner] ?></span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+
+                <li class="nav-item  <?= $_SESSION["nav_sub_set_cmail"] ?>">
+                    <a href="set_mail.php" class="nav-link ">
+
+                        <span class="title"><?= $_SESSION[set_cmail] ?></span>
+                        <span class="selected"></span>
+                        <span class="badge badge-success" ></span>
+                    </a>
+                </li>
 
 
 
+            </ul>
+        </li>
+        <!--R5 ตั้งค่า-->
     <?php } ?>
 
 

@@ -52,6 +52,9 @@ function ACTIVEPAGES($page, $sub) {
     //csm ui
     $_SESSION["nav_sub_ui_slide"] = "";
     $_SESSION["nav_sub_ui_news"] = "";
+    $_SESSION["nav_sub_ui_event"] = "";
+
+
     $_SESSION["nav_sub_ui_knowledge"] = "";
     $_SESSION["nav_sub_ui_promotion"] = "";
     $_SESSION["nav_sub_ui_popup"] = "";
@@ -101,47 +104,19 @@ function ACTIVEPAGES($page, $sub) {
             $_SESSION["nav_sub_ui_slide"] = " active open";
         } else if ($sub == 2) {
             $_SESSION["nav_sub_ui_news"] = " active open";
-        } else if ($sub == 3) {
-            $_SESSION["nav_sub_ui_knowledge"] = " active open";
-        } else if ($sub == 4) {
-            $_SESSION["nav_sub_ui_promotion"] = " active open";
-        } else if ($sub == 6) {
-            $_SESSION["nav_sub_ui_portfolio"] = " active open";
         } else if ($sub == 5) {
             $_SESSION["nav_sub_ui_popup"] = " active open";
+        } else if ($sub == 7) {
+            $_SESSION["nav_sub_ui_event"] = " active open";
         }
     } else if ($page == 99) {
         $_SESSION["nav_main_setting"] = " active open";
-        if ($sub == 1) {
-            $_SESSION["nav_sub_set_vat"] = " active open";
-        } else if ($sub == 2) {
-            $_SESSION["nav_sub_set_autoassessment"] = " active open";
-        } else if ($sub == 3) {
-            $_SESSION["nav_sub_set_dmg"] = " active open";
-        } else if ($sub == 4) {
-            $_SESSION["nav_sub_set_daily"] = " active open";
-        } else if ($sub == 5) {
+        if ($sub == 5) {
             $_SESSION["nav_sub_set_item"] = " active open";
-        } else if ($sub == 6) {
-            $_SESSION["nav_sub_set_comp_insurance"] = " active open";
         } else if ($sub == 7) {
             $_SESSION["nav_sub_set_comp_partner"] = " active open";
-        } else if ($sub == 8) {
-            $_SESSION["nav_sub_set_department"] = " active open";
-        } else if ($sub == 9) {
-            $_SESSION["nav_sub_set_year"] = " active open";
-        } else if ($sub == 10) {
-            $_SESSION["nav_sub_set_brand"] = " active open";
-        } else if ($sub == 11) {
-            $_SESSION["nav_sub_set_gen"] = " active open";
-        } else if ($sub == 12) {
-            $_SESSION["nav_sub_set_sub"] = " active open";
-        } else if ($sub == 13) {
-            $_SESSION["nav_sub_set_map"] = " active open";
         } else if ($sub == 14) {
             $_SESSION["nav_sub_set_cmail"] = " active open";
-        } else if ($sub == 15) {
-            $_SESSION["nav_sub_set_compu"] = " active open";
         }
     }
 }

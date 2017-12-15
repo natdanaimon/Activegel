@@ -10,10 +10,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-$controller = new partnerController();
+$controller = new eventController();
 switch ($info[func]) {
     case "dataTable":
-        echo $controller->dataTable();
+        echo $controller->dataTable($info);
         break;
     case "delete":
         echo $controller->delete($info[id]);
@@ -32,18 +32,18 @@ switch ($info[func]) {
         break;
 }
 
-class partnerController {
+class eventController {
 
     public function __construct() {
         include '../../common/ConnectDB.php';
         include '../../common/Utility.php';
         include '../../common/Logs.php';
         include '../../common/upload.php';
-        include '../../service/setting/partnerService.php';
+        include '../../service/ui/eventService.php';
     }
 
     public function dataTable() {
-        $service = new partnerService();
+        $service = new eventService();
         $_dataTable = $service->dataTable();
         if ($_dataTable != NULL) {
             return json_encode($_dataTable);
@@ -55,7 +55,7 @@ class partnerController {
     public function delete($seq) {
         $db = new ConnectDB();
         $db->conn();
-        $service = new partnerService();
+        $service = new eventService();
 
         // delete file temp
         $this->deleteTempFile($db);
@@ -65,10 +65,13 @@ class partnerController {
         if ($service->delete($db, $seq)) {
             $upload = new upload();
             $upload->Initial_and_Clear();
-            $upload->set_path("../../upload/partner/");
+            $upload->set_path("../../upload/event/");
             foreach ($arr_img as $key => $value) {
-                if ($arr_img[$key]['s_image'] != NULL && $arr_img[$key]['s_image'] != "") {
-                    $upload->add_FileName($arr_img[$key]['s_image']);
+                if ($arr_img[$key]['s_img_p1'] != NULL && $arr_img[$key]['s_img_p1'] != "") {
+                    $upload->add_FileName($arr_img[$key]['s_img_p1']);
+                }
+                if ($arr_img[$key]['s_img_p2'] != NULL && $arr_img[$key]['s_img_p2'] != "") {
+                    $upload->add_FileName($arr_img[$key]['s_img_p2']);
                 }
             }
 
@@ -97,7 +100,7 @@ class partnerController {
             $util = new Utility();
             $db = new ConnectDB();
             $db->conn();
-            $service = new partnerService();
+            $service = new eventService();
             // delete file temp
             $this->deleteTempFile($db);
             // delete file temp
@@ -106,10 +109,13 @@ class partnerController {
             if ($service->deleteAll($db, $query)) {
                 $upload = new upload();
                 $upload->Initial_and_Clear();
-                $upload->set_path("../../upload/partner/");
+                $upload->set_path("../../upload/event/");
                 foreach ($arr_img as $key => $value) {
-                    if ($arr_img[$key]['s_image'] != NULL && $arr_img[$key]['s_image'] != "") {
-                        $upload->add_FileName($arr_img[$key]['s_image']);
+                    if ($arr_img[$key]['s_img_p1'] != NULL && $arr_img[$key]['s_img_p1'] != "") {
+                        $upload->add_FileName($arr_img[$key]['s_img_p1']);
+                    }
+                    if ($arr_img[$key]['s_img_p2'] != NULL && $arr_img[$key]['s_img_p2'] != "") {
+                        $upload->add_FileName($arr_img[$key]['s_img_p2']);
                     }
                 }
                 if (count($upload->get_Filename()) > 0) {
@@ -132,7 +138,7 @@ class partnerController {
     }
 
     public function getInfo($seq) {
-        $service = new partnerService();
+        $service = new eventService();
         $_dataTable = $service->getInfo($seq);
         if ($_dataTable != NULL) {
             return json_encode($_dataTable);
@@ -145,23 +151,28 @@ class partnerController {
         if ($this->isValid($info)) {
             $db = new ConnectDB();
             $db->conn();
-            $service = new partnerService();
+            $service = new eventService();
             $doc = new upload();
-            $doc->set_path("../../upload/partner/");
-
-
-
+            $doc->set_path("../../upload/event/");
 
             // delete file temp
             $this->deleteTempFile($db);
             // delete file temp
-
-            if ($_FILES["s_image"]["error"] == 0) {
-                $doc->add_FileName($_FILES["s_image"]);
+            //START CASE:3
+            if ($_FILES["s_img_p1"]["error"] == 4 && $_FILES["s_img_p2"]["error"] == 4) {
+                if ($service->edit($db, $info, $info[tmp_img_p1], $info[tmp_img_p2], NULL)) {
+                    $db->commit();
+                    echo $_SESSION['cd_0000'];
+                } else {
+                    $db->rollback();
+                    echo $_SESSION['cd_2001'];
+                }
+            } else if ($_FILES["s_img_p1"]["error"] == 0 && $_FILES["s_img_p2"]["error"] == 4) {
+                $doc->add_FileName($_FILES["s_img_p1"]);
                 $flg = $doc->AddFile();
                 if ($flg) {
                     $tmpDoc = $doc->get_FilenameResult();
-                    if ($service->edit($db, $info, $tmpDoc[0])) {
+                    if ($service->edit($db, $info, $tmpDoc[0], $info[tmp_img_p2], NULL)) {
                         $db->commit();
                         echo $_SESSION['cd_0000'];
                     } else {
@@ -172,8 +183,64 @@ class partnerController {
                 } else {
                     echo $doc->get_errorMessage();
                 }
-            } else if ($_FILES["s_image"]["error"] == 4) {
-                if ($service->edit($db, $info, $info[tmp_image])) {
+            } else if ($_FILES["s_img_p1"]["error"] == 4 && $_FILES["s_img_p2"]["error"] == 0) {
+                $doc->add_FileName($_FILES["s_img_p2"]);
+                $flg = $doc->AddFile();
+                if ($flg) {
+                    $tmpDoc = $doc->get_FilenameResult();
+                    if ($service->edit($db, $info, $info[tmp_img_p1], $tmpDoc[0], NULL)) {
+                        $db->commit();
+                        echo $_SESSION['cd_0000'];
+                    } else {
+                        $db->rollback();
+                        $doc->clearFileAddFail();
+                        echo $_SESSION['cd_2001'];
+                    }
+                } else {
+                    echo $doc->get_errorMessage();
+                }
+            } else if ($_FILES["s_img_p1"]["error"] == 0 && $_FILES["s_img_p2"]["error"] == 0) {
+                $doc->add_FileName($_FILES["s_img_p1"]);
+                $doc->add_FileName($_FILES["s_img_p2"]);
+                $flg = $doc->AddFile();
+                if ($flg) {
+                    $tmpDoc = $doc->get_FilenameResult();
+                    if ($service->edit($db, $info, $tmpDoc[0], $tmpDoc[1], NULL)) {
+                        $db->commit();
+                        echo $_SESSION['cd_0000'];
+                    } else {
+                        $db->rollback();
+                        $doc->clearFileAddFail();
+                        echo $_SESSION['cd_2001'];
+                    }
+                } else {
+                    echo $doc->get_errorMessage();
+                }
+            }
+            //END CASE:3
+        }
+    }
+
+    public function add($info) {
+        if ($this->isValid($info)) {
+            $doc = new upload();
+            $doc->set_path("../../upload/event/");
+            $db = new ConnectDB();
+            $db->conn();
+            $service = new eventService();
+
+            // delete file temp
+            $this->deleteTempFile($db);
+            // delete file temp
+
+
+
+            $doc->add_FileName($_FILES["s_img_p1"]);
+            $doc->add_FileName($_FILES["s_img_p2"]);
+            $flg = $doc->AddFile();
+            if ($flg) {
+                $tmpDoc = $doc->get_FilenameResult();
+                if ($service->add($db, $info, $tmpDoc[0], $tmpDoc[1], NULL)) {
                     $db->commit();
                     echo $_SESSION['cd_0000'];
                 } else {
@@ -181,47 +248,8 @@ class partnerController {
                     $doc->clearFileAddFail();
                     echo $_SESSION['cd_2001'];
                 }
-            }
-        }
-    }
-
-    public function add($info) {
-        if ($this->isValid($info)) {
-            $doc = new upload();
-            $doc->set_path("../../upload/partner/");
-            $db = new ConnectDB();
-            $db->conn();
-            $service = new partnerService();
-
-
-
-            // delete file temp
-            $this->deleteTempFile($db);
-            // delete file temp
-            if ($_FILES["s_image"][error] == 0) {
-                $doc->add_FileName($_FILES["s_image"]);
-                $flg = $doc->AddFile();
-                if ($flg) {
-                    $tmpDoc = $doc->get_FilenameResult();
-                    if ($service->add($db, $info, $tmpDoc[0])) {
-                        $db->commit();
-                        echo $_SESSION['cd_0000'];
-                    } else {
-                        $db->rollback();
-                        $doc->clearFileAddFail();
-                        echo $_SESSION['cd_2001'];
-                    }
-                } else {
-                    echo $doc->get_errorMessage();
-                }
             } else {
-                if ($service->add($db, $info, NULL)) {
-                    $db->commit();
-                    echo $_SESSION['cd_0000'];
-                } else {
-                    $db->rollback();
-                    echo $_SESSION['cd_2001'];
-                }
+                echo $doc->get_errorMessage();
             }
         }
     }
@@ -232,16 +260,39 @@ class partnerController {
         $return2003 = $_SESSION['cd_2003'];
         $util = new Utility();
 
-        if ($util->isEmpty($info[s_comp_th])) {
-            $return2099 = eregi_replace("field", $_SESSION['lb_setPart_th'], $return2099);
+        if ($util->isEmpty($info[i_index])) {
+            $return2099 = eregi_replace("field", $_SESSION['index'], $return2099);
             echo $return2099;
-        } else if ($util->isEmpty($info[s_comp_en])) {
-            $return2099 = eregi_replace("field", $_SESSION['lb_setPart_en'], $return2099);
+        } else if (!is_numeric($info[i_index])) {
+            $return2003 = eregi_replace("field", $_SESSION['index'], $return2003);
+            echo $return2003;
+        } else if ($util->isEmpty($info[i_view])) {
+            $return2099 = eregi_replace("field", $_SESSION['view_count'], $return2099);
             echo $return2099;
-        } else if ($util->isEmpty($info[s_url])) {
-            $return2099 = eregi_replace("field", $_SESSION['lb_setPart_url'], $return2099);
+        } else if (!is_numeric($info[i_view])) {
+            $return2003 = eregi_replace("field", $_SESSION['view_count'], $return2003);
+            echo $return2003;
+        } else if ($util->isEmpty($info[i_vote])) {
+            $return2099 = eregi_replace("field", $_SESSION['vote_count'], $return2099);
             echo $return2099;
-        } else if (($_FILES["s_image"]["error"] == 4 || $_FILES["s_image"] == NULL ) && $info[func] == "add") {
+        } else if (!is_numeric($info[i_vote])) {
+            $return2003 = eregi_replace("field", $_SESSION['vote_count'], $return2003);
+            echo $return2003;
+        } else if ($util->isEmpty($info[s_subject_th])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setEvent_subject'], $return2099);
+            echo $return2099;
+        } else if ($util->isEmpty($info[s_subject_en])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setEvent_subject_en'], $return2099);
+            echo $return2099;
+        } else if ($util->isEmpty($info[s_detail_th])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setEvent_detail'], $return2099);
+            echo $return2099;
+        } else if ($util->isEmpty($info[s_detail_en])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setEvent_detail_en'], $return2099);
+            echo $return2099;
+        } else if (($_FILES["s_img_p1"]["error"] == 4 || $_FILES["s_img_p1"] == NULL ) && $info[func] == "add") {
+            echo $_SESSION['cd_2207'];
+        } else if (($_FILES["s_img_p2"]["error"] == 4 || $_FILES["s_img_p2"] == NULL) && $info[func] == "add") {
             echo $_SESSION['cd_2207'];
         } else {
             $intReturn = TRUE;
@@ -252,12 +303,12 @@ class partnerController {
 
     public function deleteTempFile($db) {
         $temp = new upload();
-        $svTemp = new partnerService();
-        $temp->set_path("../../upload/partner/");
+        $svTemp = new eventService();
+        $temp->set_path("../../upload/event/");
         $_dataTemp = $svTemp->getInfoFile($db);
         foreach ($_dataTemp as $key => $value) {
-            if ($_dataTemp[$key]['s_image'] != "") {
-                $temp->add_FileName($_dataTemp[$key]['s_image']);
+            if ($_dataTemp[$key]['img'] != "") {
+                $temp->add_FileName($_dataTemp[$key]['img']);
             }
         }
         $temp->deleteFileNoTemp();

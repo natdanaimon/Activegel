@@ -15,9 +15,11 @@ function getDDLStatus() {
             });
             $("#status").html(htmlOption);
             if (keyEdit != "") {
-                edit();
+                setTimeout(edit, 2000);
+//                edit();
+            } else {
+                unloading();
             }
-
         },
         error: function (data) {
 
@@ -35,12 +37,28 @@ function edit() {
             //$('#se-pre-con').fadeIn(100);
         },
         success: function (data) {
+            $("#tmp_image").val("");
+            $('#s_image').attr('src', 'images/no-image.png');
             var res = JSON.parse(data);
             $.each(res, function (i, item) {
                 debugger;
+
+
+
+
                 $("#s_comp_th").val(item.s_comp_th);
-                $("#i_index").val(item.i_index);
+                $("#s_comp_en").val(item.s_comp_en);
+                $("#s_url").val(item.s_url);
+
+
+
+
                 $("#status").val(item.s_status);
+                if (item.s_image != "") {
+                    $('#img1').attr('src', 'upload/partner/' + item.s_image);
+                    $("#tmp_image").val(item.s_image);
+                }
+
                 $("#lb_create").text(item.s_create_by + " ( " + item.d_create + " )");
                 var lb_edit = (item.s_update_by != "" ? item.s_update_by + " ( " + item.d_update + " )" : "-");
                 $("#lb_edit").text(lb_edit);
@@ -54,46 +72,51 @@ function edit() {
         }
 
     });
+
+
+
+
 }
-
-
-
-
 
 function save() {
-    var Jsdata = $("#form-action").serialize();
-    debugger;
-    $.ajax({
-        type: 'POST',
-        url: 'controller/setting/partnerController.php',
-        data: Jsdata,
-        beforeSend: function ()
-        {
-            $('#se-pre-con').fadeIn(100);
-        },
-        success: function (data) {
+    $('#form-action').submit(function (e) {
+        e.preventDefault();
+        console.log($(this).serialize());
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            type: 'POST',
+            url: 'controller/setting/partnerController.php',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function ()
+            {
+                $('#se-pre-con').fadeIn(100);
+            },
+            success: function (data) {
+                var res = data.split(",");
+                if (res[0] == "0000") {
+                    var errCode = "Code (" + res[0] + ") : " + res[1];
+                    $.notify(errCode, "success");
+                } else {
+                    var errCode = "Code (" + res[0] + ") : " + res[1];
+                    $.notify(errCode, "error");
+                    //fix
+                    $('#se-pre-con').delay(100).fadeOut();
+                    return;
+                }
 
-            var res = data.split(",");
-            if (res[0] == "0000") {
-                var errCode = "Code (" + res[0] + ") : " + res[1];
-                $.notify(errCode, "success");
-            } else {
-                var errCode = "Code (" + res[0] + ") : " + res[1];
-                $.notify(errCode, "error");
-                $('#se-pre-con').delay(100).fadeOut();
-                return;
+                notification();
+                $('#form-action').each(function () {
+                    setTimeout(reloadTime, 1000);
+                });
+            }, error: function (data) {
+
             }
-            $('#se-pre-con').delay(100).fadeOut();
-            notification();
-            $('#form-action').each(function () {
-                getDDLStatus();
-                this.reset();
-            });
-//            location.reload();
-        },
-        error: function (data) {
-
-        }
-
+        });
     });
 }
+
+
+

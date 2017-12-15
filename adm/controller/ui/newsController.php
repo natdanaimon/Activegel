@@ -278,11 +278,17 @@ class newsController {
         } else if (!is_numeric($info[i_vote])) {
             $return2003 = eregi_replace("field", $_SESSION['vote_count'], $return2003);
             echo $return2003;
-        } else if ($util->isEmpty($info[s_subject])) {
+        } else if ($util->isEmpty($info[s_subject_th])) {
             $return2099 = eregi_replace("field", $_SESSION['lb_setNews_subject'], $return2099);
             echo $return2099;
-        } else if ($util->isEmpty($info[s_detail])) {
+        } else if ($util->isEmpty($info[s_subject_en])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setNews_subject_en'], $return2099);
+            echo $return2099;
+        } else if ($util->isEmpty($info[s_detail_th])) {
             $return2099 = eregi_replace("field", $_SESSION['lb_setNews_detail'], $return2099);
+            echo $return2099;
+        } else if ($util->isEmpty($info[s_detail_en])) {
+            $return2099 = eregi_replace("field", $_SESSION['lb_setNews_detail_en'], $return2099);
             echo $return2099;
         } else if (($_FILES["s_img_p1"]["error"] == 4 || $_FILES["s_img_p1"] == NULL ) && $info[func] == "add") {
             echo $_SESSION['cd_2207'];

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2017 at 12:31 PM
+-- Generation Time: Dec 15, 2017 at 07:57 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -60,18 +60,20 @@ INSERT INTO `tb_customer` (`i_customer`, `s_ref_car`, `i_title`, `s_firstname`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_employee`
+-- Table structure for table `tb_event`
 --
 
-CREATE TABLE `tb_employee` (
-  `i_emp` int(11) NOT NULL,
-  `s_firstname` varchar(100) NOT NULL,
-  `s_lastname` varchar(100) NOT NULL,
-  `s_email` varchar(100) NOT NULL,
-  `s_phone` varchar(50) NOT NULL,
-  `s_line` varchar(50) NOT NULL,
-  `s_image` varchar(100) NOT NULL,
-  `i_dept` int(11) NOT NULL,
+CREATE TABLE `tb_event` (
+  `i_event` int(10) NOT NULL,
+  `s_img_p1` varchar(100) NOT NULL,
+  `s_img_p2` varchar(100) NOT NULL,
+  `i_index` int(11) NOT NULL,
+  `s_subject_th` text NOT NULL,
+  `s_subject_en` text NOT NULL,
+  `s_detail_th` text NOT NULL,
+  `s_detail_en` text NOT NULL,
+  `i_view` int(10) NOT NULL,
+  `i_vote` int(10) NOT NULL,
   `d_create` datetime NOT NULL,
   `d_update` datetime NOT NULL,
   `s_create_by` varchar(50) NOT NULL,
@@ -108,28 +110,6 @@ INSERT INTO `tb_item` (`i_item`, `s_code`, `s_item_th`, `s_item_en`, `s_image`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_knowledge`
---
-
-CREATE TABLE `tb_knowledge` (
-  `i_know` int(10) NOT NULL,
-  `s_img_p1` varchar(100) NOT NULL,
-  `s_img_p2` varchar(100) NOT NULL,
-  `i_index` int(11) NOT NULL,
-  `s_subject` text NOT NULL,
-  `s_detail` text NOT NULL,
-  `i_view` int(10) NOT NULL,
-  `i_vote` int(10) NOT NULL,
-  `d_create` datetime NOT NULL,
-  `d_update` datetime NOT NULL,
-  `s_create_by` varchar(50) NOT NULL,
-  `s_update_by` varchar(50) NOT NULL,
-  `s_status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_mail_config`
 --
 
@@ -160,8 +140,10 @@ CREATE TABLE `tb_news` (
   `s_img_p1` varchar(100) NOT NULL,
   `s_img_p2` varchar(100) NOT NULL,
   `i_index` int(11) NOT NULL,
-  `s_subject` text NOT NULL,
-  `s_detail` text NOT NULL,
+  `s_subject_th` text NOT NULL,
+  `s_subject_en` text NOT NULL,
+  `s_detail_th` text NOT NULL,
+  `s_detail_en` text NOT NULL,
   `i_view` int(10) NOT NULL,
   `i_vote` int(10) NOT NULL,
   `d_create` datetime NOT NULL,
@@ -175,8 +157,8 @@ CREATE TABLE `tb_news` (
 -- Dumping data for table `tb_news`
 --
 
-INSERT INTO `tb_news` (`i_news`, `s_img_p1`, `s_img_p2`, `i_index`, `s_subject`, `s_detail`, `i_view`, `i_vote`, `d_create`, `d_update`, `s_create_by`, `s_update_by`, `s_status`) VALUES
-(1, '201712141757111.png', '201712141757112.png', 1, 'test', '<p>test</p>\r\n', 0, 0, '2017-12-14 17:57:11', '2017-12-14 17:57:11', 'admin', 'admin', 'A');
+INSERT INTO `tb_news` (`i_news`, `s_img_p1`, `s_img_p2`, `i_index`, `s_subject_th`, `s_subject_en`, `s_detail_th`, `s_detail_en`, `i_view`, `i_vote`, `d_create`, `d_update`, `s_create_by`, `s_update_by`, `s_status`) VALUES
+(2, '201712151056361.png', '201712151056362.png', 1, 'ดหฟกดหฟกด', 'fasdfasf', '<p>ดหกดฟหกด</p>\r\n', '<p>fdsafsdf</p>\r\n', 0, 0, '2017-12-15 10:56:36', '2017-12-15 10:56:36', 'admin', 'admin', 'A');
 
 -- --------------------------------------------------------
 
@@ -188,6 +170,7 @@ CREATE TABLE `tb_partner_comp` (
   `i_part_comp` int(11) NOT NULL,
   `s_comp_th` varchar(100) NOT NULL,
   `s_comp_en` varchar(100) NOT NULL,
+  `s_url` varchar(100) NOT NULL,
   `i_index` int(11) NOT NULL,
   `s_image` varchar(100) NOT NULL,
   `d_create` datetime NOT NULL,
@@ -224,28 +207,6 @@ INSERT INTO `tb_popup` (`s_key`, `s_image`, `s_url`, `d_start`, `d_end`, `d_upda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_portfolio`
---
-
-CREATE TABLE `tb_portfolio` (
-  `i_portf` int(10) NOT NULL,
-  `s_img_p1` varchar(100) NOT NULL,
-  `s_img_p2` varchar(100) NOT NULL,
-  `i_index` int(11) NOT NULL,
-  `s_subject` text NOT NULL,
-  `s_detail` text NOT NULL,
-  `i_view` int(10) NOT NULL,
-  `i_vote` int(10) NOT NULL,
-  `d_create` datetime NOT NULL,
-  `d_update` datetime NOT NULL,
-  `s_create_by` varchar(50) NOT NULL,
-  `s_update_by` varchar(50) NOT NULL,
-  `s_status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_position`
 --
 
@@ -262,28 +223,6 @@ CREATE TABLE `tb_position` (
 INSERT INTO `tb_position` (`i_position`, `s_detail`, `s_status`) VALUES
 (1, 'สไลด์หน้าแรก', 'A'),
 (2, 'สไลด์หน้าอยากซ่อมอู่', 'C');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_promotion`
---
-
-CREATE TABLE `tb_promotion` (
-  `i_promotion` int(10) NOT NULL,
-  `s_img_p1` varchar(100) NOT NULL,
-  `s_img_p2` varchar(100) NOT NULL,
-  `i_index` int(11) NOT NULL,
-  `s_subject` text NOT NULL,
-  `s_detail` text NOT NULL,
-  `i_view` int(10) NOT NULL,
-  `i_vote` int(10) NOT NULL,
-  `d_create` datetime NOT NULL,
-  `d_update` datetime NOT NULL,
-  `s_create_by` varchar(50) NOT NULL,
-  `s_update_by` varchar(50) NOT NULL,
-  `s_status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -370,11 +309,11 @@ ALTER TABLE `tb_customer`
   ADD KEY `index_customer_search` (`s_status`);
 
 --
--- Indexes for table `tb_employee`
+-- Indexes for table `tb_event`
 --
-ALTER TABLE `tb_employee`
-  ADD PRIMARY KEY (`i_emp`),
-  ADD KEY `index_employee_search` (`s_status`,`i_dept`);
+ALTER TABLE `tb_event`
+  ADD PRIMARY KEY (`i_event`),
+  ADD KEY `index_tb_event` (`i_vote`,`i_view`,`s_status`);
 
 --
 -- Indexes for table `tb_item`
@@ -383,13 +322,6 @@ ALTER TABLE `tb_item`
   ADD PRIMARY KEY (`i_item`),
   ADD KEY `index_item` (`s_status`),
   ADD KEY `index_item_code` (`s_code`);
-
---
--- Indexes for table `tb_knowledge`
---
-ALTER TABLE `tb_knowledge`
-  ADD PRIMARY KEY (`i_know`),
-  ADD KEY `index_tb_knowledge` (`i_vote`,`i_view`,`s_status`);
 
 --
 -- Indexes for table `tb_news`
@@ -412,25 +344,11 @@ ALTER TABLE `tb_popup`
   ADD PRIMARY KEY (`s_key`);
 
 --
--- Indexes for table `tb_portfolio`
---
-ALTER TABLE `tb_portfolio`
-  ADD PRIMARY KEY (`i_portf`),
-  ADD KEY `index_tb_portfolio` (`i_vote`,`i_view`,`s_status`);
-
---
 -- Indexes for table `tb_position`
 --
 ALTER TABLE `tb_position`
   ADD PRIMARY KEY (`i_position`),
   ADD KEY `index_tb_position` (`s_status`);
-
---
--- Indexes for table `tb_promotion`
---
-ALTER TABLE `tb_promotion`
-  ADD PRIMARY KEY (`i_promotion`),
-  ADD KEY `index_tb_promotion` (`i_vote`,`i_view`,`s_status`);
 
 --
 -- Indexes for table `tb_slide`
@@ -462,45 +380,30 @@ ALTER TABLE `tb_user`
 ALTER TABLE `tb_customer`
   MODIFY `i_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `tb_employee`
+-- AUTO_INCREMENT for table `tb_event`
 --
-ALTER TABLE `tb_employee`
-  MODIFY `i_emp` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_event`
+  MODIFY `i_event` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_item`
 --
 ALTER TABLE `tb_item`
   MODIFY `i_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `tb_knowledge`
---
-ALTER TABLE `tb_knowledge`
-  MODIFY `i_know` int(10) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `tb_news`
 --
 ALTER TABLE `tb_news`
-  MODIFY `i_news` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `i_news` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_partner_comp`
 --
 ALTER TABLE `tb_partner_comp`
-  MODIFY `i_part_comp` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tb_portfolio`
---
-ALTER TABLE `tb_portfolio`
-  MODIFY `i_portf` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `i_part_comp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_position`
 --
 ALTER TABLE `tb_position`
   MODIFY `i_position` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tb_promotion`
---
-ALTER TABLE `tb_promotion`
-  MODIFY `i_promotion` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_slide`
 --

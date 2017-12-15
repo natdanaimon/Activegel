@@ -22,8 +22,13 @@ function initialDataTable(first) {
             $.each(res, function (i, item) {
 
                 var col_checkbox = "";
-                var col_dmg = item.s_comp_th;
-                var col_index = item.i_index;
+                var col_picture = "";
+                var col_comp = (language == "th" ? item.s_comp_th : item.s_comp_en);
+
+
+
+
+
                 var col_status = "";
                 var col_edit = "";
                 var col_delete = "";
@@ -39,6 +44,14 @@ function initialDataTable(first) {
 
 
 
+                if (item.s_image != "") {
+                    col_picture = '<a title="' + item.s_image + '" class="example-image-link" href="upload/compInsurance/' + item.s_image + '" data-lightbox="example-' + item.i_part_comp + '">';
+                    col_picture += '<img class="example-image" src="upload/partner/' + item.s_image + '" width="50px" height="50px"  />';
+                    col_picture += '</a>';
+                }else{
+                    col_picture += '<img class="example-image" src="images/noImage.jpeg" width="50px" height="50px"  />';
+                    
+                }
 
 
                 col_status = '';
@@ -51,16 +64,14 @@ function initialDataTable(first) {
                 col_edit += '</a>';
 
 
-
-
                 col_delete += '<a href="' + (disable != "" ? '#' : 'javascript:Confirm(\'' + item.i_part_comp + '\',\'delete\');') + '" class="btn btn-circle btn-icon-only red" ' + disable + '>';
                 col_delete += ' <i class="fa fa-trash-o"></i>';
                 col_delete += '</a>';
 
                 var addRow = [
                     col_checkbox,
-                    col_dmg,
-                    col_index,
+                    col_picture,
+                    col_comp,
                     col_status,
                     col_edit,
                     col_delete
@@ -72,7 +83,7 @@ function initialDataTable(first) {
             if (first == "TRUE") {
                 $datatable.dataTable({
                     data: JsonData,
-                    order: [[3, 'asc'],[2, 'asc']],
+                    order: [[4, 'asc'],[2, 'asc'] ],
                     columnDefs: [
                         {"orderable": false, "targets": 0}
                     ]

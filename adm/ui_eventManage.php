@@ -2,13 +2,13 @@
 @session_start();
 include './common/Permission.php';
 include './common/FunctionCheckActive.php';
-ACTIVEPAGES(14, 2);
+ACTIVEPAGES(14, 7);
 
 if ($_GET[func] != NULL) {
     $tt_header = ($_GET[func] == "add" ? $_SESSION[add_info] : $_SESSION[edit_info]);
 }
 if ($_GET[id] == NULL && $_GET[func] != "add") {
-    echo header("Location: ui_news.php");
+    echo header("Location: ui_event.php");
 }
 ?>
 <!DOCTYPE html>
@@ -83,7 +83,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                     <i class="fa fa-circle" style="color:  #00FF00;"></i>
                                 </li>
                                 <li>
-                                    <a href="ui_news.php"><?= $_SESSION[ui_news] ?></a>
+                                    <a href="ui_event.php"><?= $_SESSION[ui_event] ?></a>
                                     <i class="fa fa-circle" style="color:  #00FF00;"></i>
                                 </li>
                                 <li>
@@ -118,11 +118,11 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
 
                                                 <div class="form-group form-md-line-input has-success" id="div-sv-src">
                                                     <input type="text" class="form-control bold" id="s_subject_th" name="s_subject_th">
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setNews_subject] ?> <span class="required">*</span></label>          
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setEvent_subject] ?> <span class="required">*</span></label>          
                                                 </div>
                                                 <div class="form-group form-md-line-input has-success" id="div-sv-src">
                                                     <input type="text" class="form-control bold" id="s_subject_en" name="s_subject_en">
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setNews_subject_en] ?> <span class="required">*</span></label>          
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setEvent_subject_en] ?> <span class="required">*</span></label>          
                                                 </div>
 
                                                 <div class="form-group form-md-line-input has-success">
@@ -140,13 +140,13 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
 
                                                 <div class="form-group form-md-line-input has-success" >
                                                     <textarea class="form-control bold" name="s_detail_th" id="s_detail_th" ></textarea>
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setNews_detail] ?> <span class="required">*</span>
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setEvent_detail] ?> <span class="required">*</span>
                                                     </label>          
                                                 </div>
 
                                                 <div class="form-group form-md-line-input has-success" >
                                                     <textarea class="form-control bold" name="s_detail_en" id="s_detail_en" ></textarea>
-                                                    <label for="form_control_1"><?= $_SESSION[lb_setNews_detail_en] ?> <span class="required">*</span>
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setEvent_detail_en] ?> <span class="required">*</span>
                                                     </label>          
                                                 </div>
 
@@ -255,7 +255,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                     <div class="col-md-12">
                                         <div class="portlet-body form">
                                             <div class="form-actions noborder">
-                                                <a href="ui_news.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
+                                                <a href="ui_event.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
                                                 <button type="submit"  class="btn blue" ><?= $_SESSION[btn_submit] ?></button>
                                             </div>
                                         </div>
@@ -303,7 +303,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <!-- END QUICK NAV -->
 
         <script src="ckeditor/ckeditor.js"></script>
-        <?php $_SESSION["folder_upload"] = "newsDetail" ?>
+        <?php $_SESSION["folder_upload"] = "eventDetail" ?>
         <script>
             CKEDITOR.replace('s_detail_th', {"filebrowserImageUploadUrl": "iaupload_all.php"});
             CKEDITOR.replace('s_detail_en', {"filebrowserImageUploadUrl": "iaupload_all.php"});
@@ -341,7 +341,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
 
         <script src="js/common/notify.js" type="text/javascript"></script>
         <link href="css/notify.css" rel="stylesheet" type="text/css" />
-        <script src="js/action/ui/newsManage.js" type="text/javascript"></script>
+        <script src="js/action/ui/eventManage.js" type="text/javascript"></script>
 
         <!-- BEGIS SELECT 2 SCRIPTS -->
         <link href="css/select2.min.css" rel="stylesheet" />

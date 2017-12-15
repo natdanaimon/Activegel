@@ -12,8 +12,6 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
     echo header("Location: set_compPartner.php");
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <!-- BEGIN HEAD -->
@@ -32,8 +30,11 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/global/plugins/jquery-minicolors/jquery.minicolors.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
@@ -99,7 +100,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
 
                         <!------------ CONTENT ------------>
                         <div class="row">
-                            <form id="form-action">
+                            <form enctype="multipart/form-data" name="form-action" id="form-action" method="post">
                                 <input type="hidden" id="func" name="func" value="<?= $_GET[func] ?>"/>
                                 <input type="hidden" id="id" name="id" value="<?= $_GET[id] ?>"/>
                                 <div class="col-md-8">
@@ -107,30 +108,30 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                     <div class="portlet light bordered">
                                         <div class="portlet-title">
                                             <div class="caption font-green">
-                                                <i class="fa fa-cog font-green"></i>
+                                                <i class="icon-cog font-green"></i>
                                                 <span class="caption-subject bold uppercase"> <?= $_SESSION[tt_detail] ?></span>
                                             </div>
                                         </div>
-
                                         <div class="portlet-body form">
+
                                             <div class="form-body">
+
+
+
                                                 <div class="form-group form-md-line-input has-success">
-                                                    <input type="text" class="form-control bold" id="s_comp_th" name="s_comp_th">
+                                                    <input type="text" class="form-control bold" id="s_comp_th" name="s_comp_th" >
                                                     <label for="form_control_1"><?= $_SESSION[lb_setPart_th] ?> <span class="required">*</span></label>          
                                                 </div>
 
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="portlet-body form">
-                                            <div class="form-body">
                                                 <div class="form-group form-md-line-input has-success">
-                                                    <input type="text" class="form-control bold" id="i_index" name="i_index">
-                                                    <label for="form_control_1"><?= $_SESSION[index] ?> <span class="required">*</span></label>          
+                                                    <input type="text" class="form-control bold" id="s_comp_en" name="s_comp_en" >
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setPart_en] ?> <span class="required">*</span></label>          
                                                 </div>
 
+                                                <div class="form-group form-md-line-input has-success">
+                                                    <input type="text" class="form-control bold" id="s_url" name="s_url" >
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setPart_url] ?> <span class="required">*</span></label>          
+                                                </div>
 
                                             </div>
 
@@ -167,6 +168,36 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                         </div>
                                     </div>
 
+
+                                    <input type="hidden" name="tmp_image" id="tmp_image">
+                                    <div class="col-md-12" id="div-img1" >
+                                        <div class="portlet light bordered" >
+                                            <div class="portlet-title">
+                                                <div class="caption font-green">
+                                                    <i class="fa fa-image font-green"></i>
+                                                    <span class="caption-subject bold uppercase"> <?= $_SESSION[lb_setInsurance_image] ?> </span>
+                                                </div>
+                                            </div>
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail"  style="max-width: 200px; max-height: 150px;">
+                                                    <img id="img1" src="images/no-image.png" alt="" style="max-width: 200px; max-height: 150px;"/> </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"> </div>
+                                                <div>
+                                                    <span class="btn default btn-file">
+                                                        <span class="fileinput-new"> <?= $_SESSION[btn_select_img] ?> </span>
+                                                        <span class="fileinput-exists"> <?= $_SESSION[btn_change] ?> </span>
+                                                        <input type="file" name="s_image" id="s_image"> </span>
+
+                                                    <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> <?= $_SESSION[btn_remove] ?> </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
                                     <!-- END EXAMPLE TABLE PORTLET-->
                                 </div>
                                 <div class="row">
@@ -174,9 +205,8 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
                                         <div class="portlet-body form">
                                             <div class="form-actions noborder">
                                                 <a href="set_compPartner.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
-                                                <button type="button" class="btn blue" onclick="save()"><?= $_SESSION[btn_submit] ?></button>
+                                                <button type="submit"  class="btn blue" ><?= $_SESSION[btn_submit] ?></button>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -235,14 +265,15 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
-        <script src="js/common/markPattern.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
         <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<!--        <script src="../assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>-->
+        <script src="../assets/pages/scripts/components-color-pickers.min.js" type="text/javascript"></script><!-- END PAGE LEVEL SCRIPTS -->
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
@@ -254,6 +285,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <script src="js/common/notify.js" type="text/javascript"></script>
         <link href="css/notify.css" rel="stylesheet" type="text/css" />
 
+
         <!-- BEGIS SELECT 2 SCRIPTS -->
         <link href="css/select2.min.css" rel="stylesheet" />
         <script src="js/common/select2.min.js"></script>
@@ -262,11 +294,12 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
         <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>
         <script src="js/action/setting/partnerManage.js" type="text/javascript"></script>
         <script>
-                                                    var keyEdit = "<?= $_GET[id] ?>";
+            var keyEdit = "<?= $_GET[id] ?>";
         </script>
         <script>
             $(document).ready(function () {
                 getDDLStatus();
+                save();
                 if (keyEdit == "") {
                     unloading();
                 }

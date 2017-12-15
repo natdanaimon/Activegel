@@ -1,9 +1,8 @@
 <?php
 @session_start();
 include './common/Permission.php';
-include './common/PermissionADM.php';
 include './common/FunctionCheckActive.php';
-ACTIVEPAGES(99, 7);
+ACTIVEPAGES(14, 7);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +69,11 @@ ACTIVEPAGES(99, 7);
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
                                 <li>
-                                    <span><?= $_SESSION[setting] ?></span>
-                                    <i class="fa fa-circle" style="color:  #00FF00;"></i>
+                                    <span><?= $_SESSION[ui_management] ?></span>
+                                    <i class="fa fa-circle" style="color: #00FF00;"></i>
                                 </li>
                                 <li>
-                                    <a href="set_compPartner.php"><?= $_SESSION[comp_partner] ?></a>
+                                    <a href="ui_event.php"><?= $_SESSION[ui_event] ?></a>
                                 </li>
                             </ul>
 
@@ -91,8 +90,8 @@ ACTIVEPAGES(99, 7);
                                 <div class="portlet light bordered">
                                     <div class="portlet-title">
                                         <div class="caption font-dark">
-                                            <i class="icon-settings font-dark"></i>
-                                            <span class="caption-subject bold uppercase"><?= $_SESSION[tt_mg_comp_partner] ?></span>
+                                            <i class="fa fa-television font-dark"></i>
+                                            <span class="caption-subject bold uppercase"><?= $_SESSION[tt_mg_event] ?></span>
                                         </div>
                                         <div class="actions">
 
@@ -101,12 +100,12 @@ ACTIVEPAGES(99, 7);
                                     <div class="portlet-body">
                                         <div class="table-toolbar">
                                             <div class="row">
-                                                <!--                                                <div class="col-md-6">
-                                                
-                                                                                                </div>-->
-                                                <div class="col-md-6" align="left"  <?= $hidden ?>>
+<!--                                                <div class="col-md-6">
+
+                                                </div>-->
+                                                <div class="col-md-12" align="left" <?= $hidden ?>>
                                                     <div class="btn-group">
-                                                        <a href="set_compPartnerManage.php?func=add">
+                                                        <a href="ui_eventManage.php?func=add">
                                                             <button id="sample_editable_1_new" class="btn sbold green"> <?= $_SESSION[btn_add] ?>
                                                             </button>
                                                         </a>
@@ -120,14 +119,11 @@ ACTIVEPAGES(99, 7);
 
                                             </div>
                                         </div>
+
                                         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="datatable">
                                             <thead>
                                                 <tr>
                                                     <th style="padding-left: 0px;width: 20px" class="no-sort">
-                                                        <!--                                                        <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                                                                                    <input type="checkbox" class="group-checkable" data-set="#datatable .checkboxes" id="select_all" />
-                                                                                                                    <span></span>
-                                                                                                                </label>-->
                                                         <span class="md-checkbox has-success">
                                                             <input type="checkbox" id="checkbox14" name="checkbox14" class="md-check">
                                                             <label for="checkbox14">
@@ -136,9 +132,10 @@ ACTIVEPAGES(99, 7);
                                                                 <span class="box"></span> </label>
                                                         </span>
                                                     </th>
-
+                                                    
                                                     <th>  <?= $_SESSION[tb_co_image] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_partner] ?> </th>
+                                                    <th>  <?= $_SESSION[tb_co_subject] ?> </th>
+                                                    <th>  <?= $_SESSION[tb_co_index] ?> </th>
                                                     <th>  <?= $_SESSION[tb_co_status] ?> </th>
                                                     <th style="width: 40px"> <?= $_SESSION[tb_co_edit] ?> </th>
                                                     <th style="width: 40px"> <?= $_SESSION[tb_co_delete] ?></th>
@@ -153,6 +150,11 @@ ACTIVEPAGES(99, 7);
                             </div>
                         </div>
                         <!------------ CONTENT ------------>
+
+
+
+
+
                     </div>
                     <!-- END CONTENT BODY -->
                 </div>
@@ -207,9 +209,13 @@ ACTIVEPAGES(99, 7);
         <script src="js/common/notify.js" type="text/javascript"></script>
         <script src="js/common/utility.js" type="text/javascript"></script>
         <link href="css/notify.css" rel="stylesheet" type="text/css" />
+        <script src="js/action/ui/event.js" type="text/javascript"></script>
         <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
         <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>
-        <script src="js/action/setting/partner.js" type="text/javascript"></script>
+
+
+
+
         <script>
                                                             $(document).ready(function () {
                                                                 initialDataTable("TRUE");

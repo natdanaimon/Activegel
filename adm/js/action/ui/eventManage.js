@@ -35,7 +35,7 @@ function edit() {
     var _en = true;
     $.ajax({
         type: 'GET',
-        url: 'controller/ui/newsController.php?func=getInfo&id=' + keyEdit,
+        url: 'controller/ui/eventController.php?func=getInfo&id=' + keyEdit,
         beforeSend: function ()
         {
             //$('#se-pre-con').fadeIn(100);
@@ -71,11 +71,11 @@ function edit() {
 
                 $("#status").val(item.s_status);
                 if (item.s_img_p1 != "") {
-                    $('#img1').attr('src', 'upload/news/' + item.s_img_p1);
+                    $('#img1').attr('src', 'upload/event/' + item.s_img_p1);
                     $("#tmp_img_p1").val(item.s_img_p1);
                 }
                 if (item.s_img_p2 != "") {
-                    $('#img2').attr('src', 'upload/news/' + item.s_img_p2);
+                    $('#img2').attr('src', 'upload/event/' + item.s_img_p2);
                     $("#tmp_img_p2").val(item.s_img_p2);
                 }
 
@@ -149,7 +149,7 @@ function save() {
         var formData = new FormData($(this)[0]);
         $.ajax({
             type: 'POST',
-            url: 'controller/ui/newsController.php',
+            url: 'controller/ui/eventController.php',
             data: formData,
             cache: false,
             contentType: false,

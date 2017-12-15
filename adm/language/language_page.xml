@@ -71,47 +71,28 @@
     
     <!--  profile -->    
         
-       
-    <!--  vat --> 
-    <detail>
-        <variable>lb_setVat_vat</variable>
-        <th>หน่วยภาษีที่คำนวน</th>
-        <en>Calculated tax unit</en>
-    </detail>  
-    <!--  vat --> 
-	
-    <!--  department --> 
-    <detail>
-        <variable>lb_setDetp_th</variable>
-        <th>แผนกงาน</th>
-        <en>Department</en>
-    </detail>  
-    <!--  department --> 
-    <!--  compulsory --> 
-    <detail>
-        <variable>lb_setCompu_name</variable>
-        <th>ชื่อประกันภัยภาคบังคับ</th>
-        <en>Compulsory name</en>
-    </detail>  
-    <detail>
-        <variable>lb_setCompu_amount</variable>
-        <th>จำนวนเงิน</th>
-        <en>Amount</en>
-    </detail>  
-    <!--  compulsory --> 
-	 
-    <!--  damage --> 
-    <detail>
-        <variable>lb_setDmg_th</variable>
-        <th>ระดับความเสียหาย</th>
-        <en>Level Damage</en>
-    </detail>  
-    <!--  damage -->        
+     
+    
     <!--  comp partner --> 
     <detail>
         <variable>lb_setPart_th</variable>
-        <th>คู่ค้า</th>
-        <en>Partner Company</en>
+        <th>ชื่อคู่ค้าภาษาไทย</th>
+        <en>Partner Company TH</en>
+    </detail>  
+    <detail>
+        <variable>lb_setPart_en</variable>
+        <th>ชื่อคู่ค้าภาษาอังกฤษ</th>
+        <en>Partner Company EN</en>
+    </detail>  
+    <detail>
+        <variable>lb_setPart_url</variable>
+        <th>ทางเข้าเว็บไซต์</th>
+        <en>URL Website</en>
+    </detail>  
+    <detail>
+        <variable>lb_setPart_image</variable>
+        <th>รูปภาพบริษัทคู่ค้า</th>
+        <en>Partner Image</en>
     </detail>  
     <!--  comp partner -->      
 	 
@@ -132,40 +113,7 @@
         <en>Item Image</en>
     </detail>  
     <!--  Item -->   
-     
-    <!--  comp Insurance --> 
-    <detail>
-        <variable>lb_setInsurance_th</variable>
-        <th>ชื่อบริษัทประกันภัย</th>
-        <en>Insurance Company</en>
-    </detail>  
-    <detail>
-        <variable>lb_setInsurance_image</variable>
-        <th>รูปภาพบริษัทประกันภัย</th>
-        <en>Insurance Image</en>
-    </detail>  
-    <!--  comp Insurance -->            
-      
-    <!--  daily --> 
-    <detail>
-        <variable>lb_setDaily_th</variable>
-        <th>ชื่อรายการบันทึกประจำวัน</th>
-        <en>Daily Record Name</en>
-    </detail>  
-    <!--  daily -->     
-	 
-    <!--  auto --> 
-    <detail>
-        <variable>lb_setAuto_dept</variable>
-        <th>ชื่อแผนกงาน</th>
-        <en>Department Name</en>
-    </detail>  
-    <detail>
-        <variable>lb_setAuto_day</variable>
-        <th>จำนวนวันสำหรับประเมินวันอัตโนมัติ</th>
-        <en>Days for automatic date assessment</en>
-    </detail>  
-    <!--  auto --> 
+  
 	 
 	 
     <!--  user --> 
@@ -211,38 +159,7 @@
     </detail> 
     <!--  user --> 
 	 
-    <!--  employee --> 
-    <detail>
-        <variable>lb_setEmployee_fname</variable>
-        <th>ชื่อ</th>
-        <en>Firstname</en>
-    </detail>
-    <detail>
-        <variable>lb_setEmployee_lname</variable>
-        <th>นามสกุล</th>
-        <en>Lastname</en>
-    </detail>  	
-    <detail>
-        <variable>lb_setEmployee_phone</variable>
-        <th>เบอร์โทรศัพท์</th>
-        <en>Phone</en>
-    </detail> 
-    <detail>
-        <variable>lb_setEmployee_email</variable>
-        <th>อีเมล</th>
-        <en>E-Mail</en>
-    </detail> 
-    <detail>
-        <variable>lb_setEmployee_line</variable>
-        <th>ไลน์ไอดี</th>
-        <en>Line ID</en>
-    </detail> 
-    <detail>
-        <variable>lb_setEmployee_dept</variable>
-        <th>แผนกงาน</th>
-        <en>Department</en>
-    </detail> 
-    <!--  employee -->
+    
 	 
 	 
     <!--  customer --> 
@@ -289,63 +206,7 @@
     <!--  customer -->
     
     
-    
-    <!--  year --> 
-    <detail>
-        <variable>lb_setYear_year</variable>
-        <th>ปีรถ</th>
-        <en>Car year</en>
-    </detail>  
-    <detail>
-        <variable>lb_setAuto_day</variable>
-        <th>จำนวนวันสำหรับประเมินวันอัตโนมัติ</th>
-        <en>Days for automatic date assessment</en>
-    </detail>  
-    <!--  year --> 
-    
-    <!--  brand --> 
-    <detail>
-        <variable>lb_setBrand_code</variable>
-        <th>รหัสแบรนด์รถ</th>
-        <en>Car year code</en>
-    </detail> 
-    <detail>
-        <variable>lb_setBrand_name</variable>
-        <th>แบรนด์รถ</th>
-        <en>Car year</en>
-    </detail>  
-    <!--  brand --> 
-    <!--  generation --> 
-    <detail>
-        <variable>lb_setGen_code</variable>
-        <th>รหัสรุ่นรถ</th>
-        <en>Car generation code</en>
-    </detail>  
-    <detail>
-        <variable>lb_setGen_name</variable>
-        <th>รุ่นรถ</th>
-        <en>Car generation</en>
-    </detail>  
-    <!--  generation --> 
-    <!--  sub --> 
-    <detail>
-        <variable>lb_setSub_code</variable>
-        <th>รหัสรุ่นเครื่องยนต์</th>
-        <en>Car sub code</en>
-    </detail>  
-    <detail>
-        <variable>lb_setSub_name</variable>
-        <th>รุ่นเครื่องยนต์</th>
-        <en>Car sub</en>
-    </detail>  
-    <!--  sub --> 
-    <!--  car mapping --> 
-    <detail>
-        <variable>lb_setCar_code</variable>
-        <th>รหัสข้อมูลรถ</th>
-        <en>Car code</en>
-    </detail>  
-    <!--  car mapping -->  
+   
     
     
     <!--  config email --> 
@@ -362,197 +223,60 @@
     <!--  config email --> 
     
     
-    
-    <!--  insurance product--> 
-    <detail>
-        <variable>lb_setIns_htext</variable>
-        <th>แคมเปญ ประกันภัย</th>
-        <en>Campaign</en>
-    </detail>
-    <detail>
-        <variable>lb_setIns_code</variable>
-        <th>ข้อมูลรถ</th>
-        <en>Car info</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_comp</variable>
-        <th>บริษัทประกันภัย</th>
-        <en>Insurance Company</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_type</variable>
-        <th>ประเภทประกันภัย</th>
-        <en>Type Insurance</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_promotion</variable>
-        <th>โปรโมชัน</th>
-        <en>Promotion</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_compu</variable>
-        <th>ประกันภัยภาคบังคับ</th>
-        <en>Compulsory</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_repait</variable>
-        <th>ประเภทการซ่อม</th>
-        <en>Type Repair</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_price</variable>
-        <th>ราคาเบี้ยประกันภัย</th>
-        <en>Price</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_discount</variable>
-        <th>ส่วนลด</th>
-        <en>Discount</en>
-    </detail> 
-    <detail>
-        <variable>lb_setIns_point</variable>
-        <th>คะแนน</th>
-        <en>Point</en>
-    </detail>  
-    
-    
-    
-    <detail>
-        <variable>lb_setIns_base</variable>
-        <th>ทุนประกัน (บาท)</th>
-        <en>Insurance Base</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_fire</variable>
-        <th>คุ้มครองไฟไหม้ และ โจรกรรม (บาท)</th>
-        <en>Protec fire</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_water</variable>
-        <th>คุ้มครองน้ำท่วม (บาท)</th>
-        <en>Protec Water</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_repair</variable>
-        <th>ค่าเสียหายส่วนแรก (บาท)</th>
-        <en>Repair</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_repair_type</variable>
-        <th>ซ่อม</th>
-        <en>Repair Type</en>
-    </detail>   
-    
-    <detail>
-        <variable>lb_setIns_per</variable>
-        <th>ชีวิตบุคคลภายนอกต่อคน (บาท)</th>
-        <en>Protec Person / Per</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_pertimes</variable>
-        <th>ชีวิตบุคคลภายนอกต่อครั้ง (บาท)</th>
-        <en>Protec Pertimes</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_outside</variable>
-        <th>ทรัพย์สินบุคคลภายนอก (บาท)</th>
-        <en>Protec Outside</en>
-    </detail>  
-    
-    
-    
-    <detail>
-        <variable>lb_setIns_personal</variable>
-        <th>อุบัติเหตุส่วนบุคคล (บาท)</th>
-        <en>Protec Personal</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_insurance</variable>
-        <th>ประกันตัวผู้ขับขี่ (บาท)</th>
-        <en>Protec insirance</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_medical</variable>
-        <th>ค่ารักษาพยาบาล (บาท)</th>
-        <en>Protec Medical</en>
-    </detail>  
-    
-    
-    <detail>
-        <variable>lb_setIns_h_1</variable>
-        <th>หัวข้อความคุ้มครองเสริมรายการที่1</th>
-        <en>Extra Subject 1</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_h_2</variable>
-        <th>หัวข้อความคุ้มครองเสริมรายการที่2</th>
-        <en>Extra Subject 2</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_h_3</variable>
-        <th>หัวข้อความคุ้มครองเสริมรายการที่3</th>
-        <en>Extra Subject 3</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_d_1</variable>
-        <th>จำนวนเงิน (บาท)</th>
-        <en>Extra Detail 1</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_d_2</variable>
-        <th>จำนวนเงิน (บาท)</th>
-        <en>Extra Detail 2</en>
-    </detail>  
-    <detail>
-        <variable>lb_setIns_d_3</variable>
-        <th>จำนวนเงิน (บาท)</th>
-        <en>Extra Detail 3</en>
-    </detail>  
-    
-    
-    
-    <!--  insurance product-->  
+   
 
 
-    <!--  Promotion-->  
-    <detail>
-        <variable>lb_setPromo_subject</variable>
-        <th>หัวข้อโปรโมชั่น</th>
-        <en>Promotion Subject</en>
-    </detail>
-    <detail>
-        <variable>lb_setPromo_detail</variable>
-        <th>รายละเอียดโปรโมชั่น</th>
-        <en>Promotion Detail</en>
-    </detail>
-    <!--  Promotion-->  
+
 
 
     <!--  news-->  
     <detail>
         <variable>lb_setNews_subject</variable>
-        <th>หัวข้อข่าว</th>
-        <en>News Subject</en>
+        <th>หัวข้อข่าวภาษาไทย</th>
+        <en>News Subject TH</en>
+    </detail>
+    <detail>
+        <variable>lb_setNews_subject_en</variable>
+        <th>หัวข้อข่าวภาษาอังกฤษ</th>
+        <en>News Subject EN</en>
     </detail>
     <detail>
         <variable>lb_setNews_detail</variable>
-        <th>รายละเอียดข่าว</th>
-        <en>News Detail</en>
+        <th>รายละเอียดข่าวภาษาไทย</th>
+        <en>News Detail TH</en>
+    </detail>
+    <detail>
+        <variable>lb_setNews_detail_en</variable>
+        <th>รายละเอียดข่าวภาษาอังกฤษ</th>
+        <en>News Detail EN</en>
     </detail>
     <!--  news-->  
+    
+    
+    
+    <!--  event -->  
+    <detail>
+        <variable>lb_setEvent_subject</variable>
+        <th>หัวข้ออีเว้นภาษาไทย</th>
+        <en>News Subject TH</en>
+    </detail>
+    <detail>
+        <variable>lb_setEvent_subject_en</variable>
+        <th>หัวข้ออีเว้นภาษาอังกฤษ</th>
+        <en>News Subject EN</en>
+    </detail>
+    <detail>
+        <variable>lb_setEvent_detail</variable>
+        <th>รายละเอียดอีเว้นภาษาไทย</th>
+        <en>Event Detail TH</en>
+    </detail>
+    <detail>
+        <variable>lb_setEvent_detail_en</variable>
+        <th>รายละเอียดอีเว้นภาษาอังกฤษ</th>
+        <en>Event Detail EN</en>
+    </detail>
+    <!--  event -->  
 
-    <!--  portfolio -->  
-    <detail>
-        <variable>lb_setPort_subject</variable>
-        <th>หัวข้อผลงาน</th>
-        <en>Portfolio Subject</en>
-    </detail>
-    <detail>
-        <variable>lb_setPort_detail</variable>
-        <th>รายละเอียดผลงาน</th>
-        <en>Portfolio Detail</en>
-    </detail>
-    <!--  portfolio -->  
 
     <!--  popup-->  
     <detail>
@@ -581,161 +305,6 @@
     </detail>
     <!--  slide--> 
     
-    <!--  knowledge-->  
-    <detail>
-        <variable>lb_setKnow_subject</variable>
-        <th>หัวข้อคลังความรู้</th>
-        <en>Knowledge Subject</en>
-    </detail>
-    <detail>
-        <variable>lb_setKnow_detail</variable>
-        <th>รายละเอียดคลังความรู้</th>
-        <en>Knowledge Detail</en>
-    </detail>
-    <!--  knowledge--> 
 
-
-    <!--  transaction -->  
-    <detail>
-        <variable>lb_setTrans_first</variable>
-        <th>ชื่อ</th>
-        <en>Firstname</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_last</variable>
-        <th>นามสกุล</th>
-        <en>Lastname</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_phone</variable>
-        <th>เบอร์โทรศัพท์</th>
-        <en>Phone</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_email</variable>
-        <th>อีเมลล์</th>
-        <en>Email</en>
-    </detail>
-    
-    <detail>
-        <variable>lb_setTrans_address</variable>
-        <th>ที่อยู่สำหรับจัดส่งเอกสาร</th>
-        <en>Address</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_require</variable>
-        <th>ความต้องการอื่นๆ</th>
-        <en>Require Other</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_require_date</variable>
-        <th>วันที่เริ่มเอาประกัน</th>
-        <en>Insurance Require Date</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_compu</variable>
-        <th>ประกันภัยภาคบังคับ</th>
-        <en>Insurance Compulsory</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_total</variable>
-        <th>จำนวนเงินสุทธิที่ลูกค้าต้องชำระเงิน</th>
-        <en>Total Amount</en>
-    </detail>
-    <detail>
-        <variable>lb_setTrans_flg_compu</variable>
-        <th>จำนวนเงินสุทธิที่ลูกค้าต้องชำระเงิน</th>
-        <en>Total Amount</en>
-    </detail>
-    <!--  transaction --> 
-    
-    
-    <!--  claim -->  
-    <detail>
-        <variable>lb_setClaim_first</variable>
-        <th>ชื่อ</th>
-        <en>Firstname</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_last</variable>
-        <th>นามสกุล</th>
-        <en>Lastname</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_phone1</variable>
-        <th>เบอร์โทรศัพท์</th>
-        <en>Phone 1</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_phone2</variable>
-        <th>เบอร์โทรศัพท์ สำรอง</th>
-        <en>Phone 2</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_email</variable>
-        <th>อีเมลล์</th>
-        <en>Email</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_line</variable>
-        <th>ไลน์ไอดี</th>
-        <en>Line ID</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_ownerCar</variable>
-        <th>เจ้าของรถ</th>
-        <en>Owner Car</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_noOwnerCar</variable>
-        <th>ไม่ใช่เจ้าของรถ</th>
-        <en>No Owner Car</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_other</variable>
-        <th>อื่นๆ</th>
-        <en>Other</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_ref</variable>
-        <th>ความเกี่ยวข้องกับเจ้าของรถ</th>
-        <en>Ref Owner.</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_docClaim</variable>
-        <th>ใบเคลม</th>
-        <en>Claim Document</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_claimNo</variable>
-        <th>เลขที่รับแจ้งเคลม</th>
-        <en>Claim no</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_docClaim1</variable>
-        <th>ใบขับขี่ของผู้ขับขี่ที่ระบุในใบเคลมหรือเจ้าของรถ</th>
-        <en>Driver's license in the claim or car owner.</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_insurancePolicy</variable>
-        <th>กรมธรรม์ประกันภัย</th>
-        <en>Insurance policy</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_carRegis</variable>
-        <th>รายการจดทะเบียนรถยนต์ ปัจจุบัน</th>
-        <en>Current car registrations</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_paySlip</variable>
-        <th>หลักฐานการชำระเงิน</th>
-        <en>Pay Slip</en>
-    </detail>
-    <detail>
-        <variable>lb_setClaim_picCarDmg</variable>
-        <th>รูปถ่ายความเสียหายรถ</th>
-        <en>Image Car Damage</en>
-    </detail>
-    <!--  claim --> 
 
 </language>

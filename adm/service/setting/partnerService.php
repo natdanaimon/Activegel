@@ -24,6 +24,12 @@ class partnerService {
         return $_data;
     }
 
+    function getInfoFile($db) {
+        $strSql = "select s_image from tb_partner_comp ";
+        $_data = $db->Search_Data_FormatJson($strSql);
+        return $_data;
+    }
+
     function delete($db, $seq) {
         $strSQL = "DELETE FROM tb_partner_comp WHERE i_part_comp = '" . $seq . "' ";
         $arr = array(
@@ -49,17 +55,23 @@ class partnerService {
     }
 
     function SelectByArray($db, $query) {
-        $strSql = "SELECT * FROM tb_partner_comp WHERE i_part_comp in ($query) ";
+        $strSql = "SELECT * FROM tb_partner_comp  WHERE i_part_comp in ($query) ";
         $_data = $db->Search_Data_FormatJson($strSql);
         return $_data;
     }
 
-    function edit($db, $info) {
+    function edit($db, $info, $img1) {
+        if ($img1 == NULL) {
+            $img1 = "";
+        }
+
         $strSql = "";
         $strSql .= "update tb_partner_comp ";
         $strSql .= "set  ";
-        $strSql .= "s_comp_th  = '$info[s_comp_th]', ";
-        $strSql .= "i_index= $info[i_index], ";
+        $strSql .= "    s_comp_th='$info[s_comp_th]', ";
+        $strSql .= "    s_comp_en='$info[s_comp_en]', ";
+        $strSql .= "    s_url='$info[s_url]', ";
+        $strSql .= "    s_image='$img1', ";
         $strSql .= "d_update = " . $db->Sysdate(TRUE) . ", ";
         $strSql .= "s_update_by = '$_SESSION[username]', ";
         $strSql .= "s_status = '$info[status]' ";
@@ -71,13 +83,21 @@ class partnerService {
         return $reslut;
     }
 
-    function add($db, $info) {
+    function add($db, $info, $img1) {
+        if ($img1 == NULL) {
+            $img1 = "";
+        }
+
+
         $strSql = "";
         $strSql .= "INSERT ";
         $strSql .= "INTO ";
         $strSql .= "  tb_partner_comp( ";
         $strSql .= "    s_comp_th, ";
-        $strSql .= "    i_index, ";
+        $strSql .= "    s_comp_en, ";
+        $strSql .= "    s_url, ";
+        $strSql .= "    s_image, ";
+
         $strSql .= "    d_create, ";
         $strSql .= "    d_update, ";
         $strSql .= "    s_create_by, ";
@@ -85,8 +105,12 @@ class partnerService {
         $strSql .= "    s_status ";
         $strSql .= "  ) ";
         $strSql .= "VALUES( ";
+
         $strSql .= "  '$info[s_comp_th]', ";
-        $strSql .= "  $info[i_index], ";
+        $strSql .= "  '$info[s_comp_en]', ";
+        $strSql .= "  '$info[s_url]', ";
+        $strSql .= "  '$img1', ";
+
         $strSql .= "  " . $db->Sysdate(TRUE) . ", ";
         $strSql .= " " . $db->Sysdate(TRUE) . ", ";
         $strSql .= "  '$_SESSION[username]', ";

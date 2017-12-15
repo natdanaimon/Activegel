@@ -2,7 +2,7 @@
 
 @session_start();
 
-class newsService {
+class eventService {
 
     function dataTable() {
         $db = new ConnectDB();
@@ -12,7 +12,7 @@ class newsService {
         $strSql .= "  s.s_detail_th status_th, ";
         $strSql .= "  s.s_detail_en status_en ";
         $strSql .= "FROM ";
-        $strSql .= "  tb_news i, ";
+        $strSql .= "  tb_event i, ";
         $strSql .= "  tb_status s ";
         $strSql .= "WHERE ";
         $strSql .= " i.s_status = s.s_status ";
@@ -24,22 +24,22 @@ class newsService {
 
     function getInfo($seq) {
         $db = new ConnectDB();
-        $strSql = " select * from tb_news where i_news =" . $seq;
+        $strSql = " select * from tb_event where i_event =" . $seq;
         $_data = $db->Search_Data_FormatJson($strSql);
         $db->close_conn();
         return $_data;
     }
 
     function getInfoFile($db) {
-        $strSql = "select s_img_p1 img from tb_news ";
+        $strSql = "select s_img_p1 img from tb_event ";
         $strSql .= " union ";
-        $strSql .= " select s_img_p2 img from tb_news ";
+        $strSql .= " select s_img_p2 img from tb_event ";
         $_data = $db->Search_Data_FormatJson($strSql);
         return $_data;
     }
 
     function delete($db, $seq) {
-        $strSQL = "DELETE FROM tb_news WHERE i_news = '" . $seq . "' ";
+        $strSQL = "DELETE FROM tb_event WHERE i_event = '" . $seq . "' ";
         $arr = array(
             array("query" => "$strSQL")
         );
@@ -49,7 +49,7 @@ class newsService {
 
     function deleteAll($db, $query) {
 
-        $strSQL = "DELETE FROM tb_news WHERE i_news in ($query) ";
+        $strSQL = "DELETE FROM tb_event WHERE i_event in ($query) ";
         $arr = array(
             array("query" => "$strSQL")
         );
@@ -58,13 +58,13 @@ class newsService {
     }
 
     function SelectById($db, $seq) {
-        $strSql = "SELECT * FROM tb_news WHERE i_news = '" . $seq . "' ";
+        $strSql = "SELECT * FROM tb_event WHERE i_event = '" . $seq . "' ";
         $_data = $db->Search_Data_FormatJson($strSql);
         return $_data;
     }
 
     function SelectByArray($db, $query) {
-        $strSql = "SELECT * FROM tb_news WHERE i_news in ($query) ";
+        $strSql = "SELECT * FROM tb_event WHERE i_event in ($query) ";
         $_data = $db->Search_Data_FormatJson($strSql);
         return $_data;
     }
@@ -78,7 +78,7 @@ class newsService {
         }
 
         $strSql = "";
-        $strSql .= "update tb_news ";
+        $strSql .= "update tb_event ";
         $strSql .= "set  ";
         $strSql .= "    s_img_p1='$img1', ";
         $strSql .= "    s_img_p2='$img2', ";
@@ -96,7 +96,7 @@ class newsService {
         $strSql .= "d_update = " . $db->Sysdate(TRUE) . ", ";
         $strSql .= "s_update_by = '$_SESSION[username]', ";
         $strSql .= "s_status = '$info[status]' ";
-        $strSql .= "where i_news = $info[id] ";
+        $strSql .= "where i_event = $info[id] ";
         $arr = array(
             array("query" => "$strSql")
         );
@@ -119,7 +119,7 @@ class newsService {
         $strSql = "";
         $strSql .= "INSERT ";
         $strSql .= "INTO ";
-        $strSql .= "  tb_news( ";
+        $strSql .= "  tb_event( ";
         $strSql .= "    s_img_p1, ";
         $strSql .= "    s_img_p2, ";
         $strSql .= "    i_index, ";
