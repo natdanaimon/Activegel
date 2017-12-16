@@ -51,13 +51,15 @@ class loginController {
                     $util->CopyTemplatedMailForgot("../email/Email_Forgot.html", "../email/Email_Forgot_Temp.html", $_data[$key]['s_firstname'], $_data[$key]['s_lastname'], $_data[$key]['s_user'], $_data[$key]['s_pass']);
                     $body = $mail->getFile('../email/Email_Forgot_Temp.html');
 
-                    $mail->Host = "cpanel06wh.bkk1.cloud.z.com";
-                    $mail->Hostname = "horgarage.com";
+                    $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
+                    $mail->Hostname = "activegelthailand.com";
+                    $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
+                    $mail->Password = "P@ssw0rd1";
                     $mail->Port = 465;
                     $mail->CharSet = 'utf-8';
-                    $mail->From = "noreply@horgarage.com";
-                    $mail->FromName = "HORGARAGE";
-                    $mail->Subject = "HORGARAGE : FORGOT PASSWORD";
+                    $mail->From = "noreply@activegelthailand.com";
+                    $mail->FromName = "ACTIVEGELTHAILAND";
+                    $mail->Subject = "ACTIVEGELTHAILAND : FORGOT PASSWORD";
                     $mail->MsgHTML($body);
                     $mail->AddAddress($_data[$key]['s_email']);
                     $mailcommit = $mail->Send();

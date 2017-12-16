@@ -206,16 +206,28 @@
     
     
     
-     <detail>
+    <detail>
         <variable>lb_setCus_subject</variable>
         <th>หัวข้อการสอบถาม</th>
         <en>Subject Question</en>
     </detail> 
     
-     <detail>
+    <detail>
         <variable>lb_setCus_detail</variable>
         <th>รายละเอียด</th>
         <en>Deail Question</en>
+    </detail> 
+    
+    <detail>
+        <variable>lb_setCus_mail_subject</variable>
+        <th>หัวข้ออีเมล์</th>
+        <en>Subject email</en>
+    </detail> 
+    
+    <detail>
+        <variable>lb_setCus_mail_detail</variable>
+        <th>รายละเอียด</th>
+        <en>Deail email</en>
     </detail> 
     <!--  customer -->
     

@@ -24,6 +24,7 @@ function ACTIVEPAGES($page, $sub) {
     //csm customer
     $_SESSION["nav_sub_cus_customer"] = "";
     $_SESSION["nav_sub_cus_question"] = "";
+    $_SESSION["nav_sub_cus_mail"] = "";
 
 
 
@@ -47,8 +48,10 @@ function ACTIVEPAGES($page, $sub) {
         $_SESSION["nav_main_cus"] = " active open";
         if ($sub == 1) {
             $_SESSION["nav_sub_cus_customer"] = " active open";
-        }else if ($sub == 2) {
+        } else if ($sub == 2) {
             $_SESSION["nav_sub_cus_question"] = " active open";
+        } else if ($sub == 3) {
+            $_SESSION["nav_sub_cus_mail"] = " active open";
         }
     } else if ($page == 9) {
         $_SESSION["nav_main_emp"] = " active open";

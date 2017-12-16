@@ -7,7 +7,7 @@ function notification() {
             //$('#se-pre-con').fadeIn(100);
         },
         success: function (data) {
-            //debugger;
+            debugger;
 //            alert(1);
             if (data == '') {
                 $('#noti-customer').text("");

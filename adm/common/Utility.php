@@ -247,11 +247,11 @@ class Utility {
         $txt = fread($templatedMail, filesize($filemain));
         fclose($templatedMail);
         $txt = eregi_replace("&detail;", $msg, $txt);
-        $txt = eregi_replace("http://localhost/CSM/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com//csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
+        $txt = eregi_replace("http://localhost/Activegel/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com//adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
 
         $temp = fopen($filecopy, "w") or die("Unable to open file!");
         fwrite($temp, $txt);
@@ -265,11 +265,11 @@ class Utility {
         $txt = eregi_replace("&to;", $name . " " . $lastname, $txt);
         $txt = eregi_replace("&username;", $user, $txt);
         $txt = eregi_replace("&password;", $password, $txt);
-        $txt = eregi_replace("http://localhost/CSM/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com//csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
-        $txt = eregi_replace("https://www.horgarage.com/csm/email/", "../email/", $txt);
+        $txt = eregi_replace("http://localhost/Activegel/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com//adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
+        $txt = eregi_replace("https://www.activegelthailand.com/adm/email/", "../email/", $txt);
 
         $temp = fopen($filecopy, "w") or die("Unable to open file!");
         fwrite($temp, $txt);

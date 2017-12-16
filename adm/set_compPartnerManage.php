@@ -300,6 +300,7 @@ if ($_GET[id] == NULL && $_GET[func] != "add") {
             $(document).ready(function () {
                 getDDLStatus();
                 save();
+                notification();
                 if (keyEdit == "") {
                     unloading();
                 }

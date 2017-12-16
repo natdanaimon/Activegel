@@ -1,8 +1,9 @@
 <?php
 @session_start();
 include './common/Permission.php';
+include './common/PermissionADM.php';
 include './common/FunctionCheckActive.php';
-ACTIVEPAGES(14, 7);
+ACTIVEPAGES(2, 3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,16 +16,12 @@ ACTIVEPAGES(14, 7);
         <meta content="<?= $_SESSION[title_content] ?>"    name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <!-- END GLOBAL MANDATORY STYLES -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
@@ -69,11 +66,11 @@ ACTIVEPAGES(14, 7);
                         <div class="page-bar">
                             <ul class="page-breadcrumb">
                                 <li>
-                                    <span><?= $_SESSION[ui_management] ?></span>
+                                    <span><?= $_SESSION[cus_mcustomer] ?></span>
                                     <i class="fa fa-circle" style="color: #00FF00;"></i>
                                 </li>
                                 <li>
-                                    <a href="ui_event.php"><?= $_SESSION[ui_event] ?></a>
+                                    <a href="cus_mail.php"><?= $_SESSION[cus_mail] ?></a>
                                 </li>
                             </ul>
 
@@ -85,76 +82,59 @@ ACTIVEPAGES(14, 7);
 
                         <!------------ CONTENT ------------>
                         <div class="row">
-                            <div class="col-md-12">
-                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                                <div class="portlet light bordered">
-                                    <div class="portlet-title">
-                                        <div class="caption font-dark">
-                                            <i class="fa fa-television font-dark"></i>
-                                            <span class="caption-subject bold uppercase"><?= $_SESSION[tt_mg_event] ?></span>
-                                        </div>
-                                        <div class="actions">
+                            <form  name="form-action" id="form-action" method="post">
+                                <input type="hidden" id="func" name="func" value=""/>
 
-                                        </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                        <div class="table-toolbar">
-                                            <div class="row">
-                                                <!--                                                <div class="col-md-6">
-                                                
-                                                                                                </div>-->
-                                                <div class="col-md-12" align="left" <?= $hidden ?>>
-                                                    <div class="btn-group">
-                                                        <a href="ui_eventManage.php?func=add">
-                                                            <button id="sample_editable_1_new" class="btn sbold green"> <?= $_SESSION[btn_add] ?>
-                                                            </button>
-                                                        </a>
-                                                    </div>
-                                                    <div class="btn-group">
-                                                        <button id="sample_editable_1_new" class="btn sbold red" onclick="deleteAll()"> <?= $_SESSION[btn_delete_all] ?>
-<!--                                                            <i class="fa fa-minus"></i>-->
-                                                        </button>
-                                                    </div>
-                                                </div>
-
+                                <div class="col-md-12">
+                                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                    <div class="portlet light bordered">
+                                        <div class="portlet-title">
+                                            <div class="caption font-green">
+                                                <i class="icon-envelope font-green"></i>
+                                                <span class="caption-subject bold uppercase"> <?= $_SESSION[email] ?></span>
                                             </div>
                                         </div>
+                                        <div class="portlet-body form">
 
-                                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="datatable">
-                                            <thead>
-                                                <tr>
-                                                    <th style="padding-left: 0px;width: 20px" class="no-sort">
-                                                        <span class="md-checkbox has-success">
-                                                            <input type="checkbox" id="checkbox14" name="checkbox14" class="md-check">
-                                                            <label for="checkbox14">
-                                                                <span class="inc"></span>
-                                                                <span class="check"></span>
-                                                                <span class="box"></span> </label>
-                                                        </span>
-                                                    </th>
+                                            <div class="form-body">
 
-                                                    <th>  <?= $_SESSION[tb_co_image] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_subject] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_index] ?> </th>
-                                                    <th>  <?= $_SESSION[tb_co_status] ?> </th>
-                                                    <th style="width: 40px"> <?= $_SESSION[tb_co_edit] ?> </th>
-                                                    <th style="width: 40px"> <?= $_SESSION[tb_co_delete] ?></th>
-                                            </thead>
-                                            <tbody>
 
-                                            </tbody>
-                                        </table>
+                                                <div class="form-group form-md-line-input has-success">
+                                                    <input type="text" class="form-control bold" id="subject" name="subject">
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setCus_mail_subject] ?> <span class="required">*</span></label>          
+                                                </div>
+
+                                                <div class="form-group form-md-line-input has-success" >
+                                                    <textarea class="form-control bold" name="detail" id="detail" ></textarea>
+                                                    <label for="form_control_1"><?= $_SESSION[lb_setCus_mail_detail] ?> <span class="required">*</span>
+                                                    </label>          
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <!-- END EXAMPLE TABLE PORETLT-->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="portlet-body form">
+                                            <div class="form-actions noborder">
+                                                <a href="cus_mail.php"> <button type="button" class="btn default"><?= $_SESSION[btn_cancel] ?></button></a>
+                                                <button type="button"  class="btn yellow" onclick="save('test');" ><?= $_SESSION[btn_test] ?></button>
+                                                <button type="button"  class="btn blue" onclick="save('send');" ><?= $_SESSION[btn_sendmail] ?></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <!-- END EXAMPLE TABLE PORTLET-->
-                            </div>
+
+                            </form>
                         </div>
                         <!------------ CONTENT ------------>
-
-
-
-
-
                     </div>
                     <!-- END CONTENT BODY -->
                 </div>
@@ -178,7 +158,12 @@ ACTIVEPAGES(14, 7);
         <?php include './templated/quick_nav.php'; ?>
         <!-- END QUICK NAV -->
 
+        <script src="ckeditor/ckeditor.js"></script>
+        <?php $_SESSION["folder_upload"] = "sendmail" ?>
+        <script>
+                                                    CKEDITOR.replace('detail', {"filebrowserImageUploadUrl": "iaupload_all.php"});
 
+        </script>
 
         <!-- BEGIN CORE PLUGINS -->
         <script src="../assets/global/plugins/jquery.min.js" type="text/javascript"></script>
@@ -188,40 +173,26 @@ ACTIVEPAGES(14, 7);
         <script src="../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-        <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src="../assets/global/scripts/app.min.js" type="text/javascript"></script>
         <!-- END THEME GLOBAL SCRIPTS -->
-        <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<!--        <script src="../assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>-->
-        <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src="../assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
         <script src="../assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
         <script src="../assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="../assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
-
         <script src="js/common/notify.js" type="text/javascript"></script>
-        <script src="js/common/utility.js" type="text/javascript"></script>
         <link href="css/notify.css" rel="stylesheet" type="text/css" />
-        <script src="js/action/ui/event.js" type="text/javascript"></script>
-        <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
-        <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>
-
+        <script src="js/action/customer/cus_mail.js" type="text/javascript"></script>
 
 
 
         <script>
-                                                            $(document).ready(function () {
-                                                                initialDataTable("TRUE");
-                                                                notification();
-                                                                unloading();
-                                                            });
+                                                    $(document).ready(function () {
+                                                        notification();
+                                                        unloading();
+                                                    });
         </script>
     </body>
 

@@ -435,6 +435,11 @@
         <th>หรือ </th>
         <en>Or </en>
     </detail>	
+    <detail>
+        <variable>email</variable>
+        <th>อีเมล</th>
+        <en>Email</en>
+    </detail>	
     <!--  Other -->
     
     
@@ -784,7 +789,11 @@
         <th>ข้อมูลลูกค้า (สอบถาม)</th>
         <en>Customer (Question)</en>
     </detail>
-    
+    <detail>
+        <variable>cus_mail</variable>
+        <th>ส่งอีเมลประชาสัมพันธ์</th>
+        <en>Send Email (Newsletter)</en>
+    </detail>
     <detail>
         <variable>set_year</variable>
         <th>ข้อมูลปีรถ</th>

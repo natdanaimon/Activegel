@@ -213,6 +213,7 @@ ACTIVEPAGES(2, 1);
         <script>
                                                             $(document).ready(function () {
                                                                 initialDataTable("TRUE");
+                                                                notification();
                                                                 unloading();
                                                             });
         </script>

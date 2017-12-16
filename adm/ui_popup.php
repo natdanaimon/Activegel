@@ -245,7 +245,7 @@ ACTIVEPAGES(14, 5);
         <script src="../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-         <script src="../assets/global/plugins/moment.min.js" type="text/javascript"></script>
+        <script src="../assets/global/plugins/moment.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript"></script>
@@ -275,8 +275,8 @@ ACTIVEPAGES(14, 5);
         <link href="css/select2.min.css" rel="stylesheet" />
         <script src="js/common/select2.min.js"></script>
         <!-- END SELECT 2 SCRIPTS -->
-<!--        <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
-        <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>-->
+        <!--        <link href="outbound/lightbox/css/lightbox.css" rel="stylesheet" type="text/css" />
+                <script src="outbound/lightbox/js/lightbox.js" type="text/javascript"></script>-->
 
 
 
@@ -284,6 +284,7 @@ ACTIVEPAGES(14, 5);
             $(document).ready(function () {
                 getDDLStatus();
                 save();
+                notification();
 //                unloading();
             });
         </script>

@@ -311,6 +311,7 @@ ACTIVEPAGES(0);
         </script>
         <script>
             $(document).ready(function () {
+                notification();
                 edit();
                 savePicture();
                 FormInputMask.init();

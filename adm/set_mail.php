@@ -227,6 +227,7 @@ ACTIVEPAGES(99, 14);
         <script>
                                                     $(document).ready(function () {
                                                         edit();
+                                                        notification();
 //                                                        save();
 //                unloading();
                                                     });

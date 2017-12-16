@@ -6,14 +6,14 @@ class ConnectDB {
     protected $_user = "root";
     protected $_pass = "";
     protected $_dbname = "db_activegel";
-//    protected $_user = "cp724538_bet";
-//    protected $_pass = "Na12345678";
-//    protected $_dbname = "cp724538_bet";
+//    protected $_user = "cp682482_root";
+//    protected $_pass = "P@ssw0rd1";
+//    protected $_dbname = "cp682482_activegel";
     protected $_conn;
     protected $_email_host = "0.0.0.0";
     protected $_email_port = "25";
     protected $_email_charset = "utf-8";
-    protected $_web = "info@nagieos.com";
+    protected $_web = "info@activegelthailand.com";
 
     function Sysdate($sysdate) {
         if ($sysdate) {

@@ -177,6 +177,7 @@ ACTIVEPAGES(0);
 
         <script>
             $(document).ready(function () {
+                notification();
 //                chart_03();
 //                chart_01();
                 unloading();

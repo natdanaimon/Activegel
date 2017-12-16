@@ -46,6 +46,14 @@
                         <span style="padding: 1px 8px !important;" class="badge badge-success" id="noti-question"></span>
                     </a>
                 </li>
+                <li class="nav-item  <?= $_SESSION["nav_sub_cus_mail"] ?>">
+                    <a href="cus_mail.php" class="nav-link ">
+
+                        <span class="title"><?= $_SESSION[cus_mail] ?></span>
+                        <span class="selected"></span>
+                        <span style="padding: 1px 8px !important;" class="badge badge-success" id="noti-question"></span>
+                    </a>
+                </li>
             </ul>
         </li>
         <!--R2 บริหารจัดการข้อมูลลูกค้า-->
