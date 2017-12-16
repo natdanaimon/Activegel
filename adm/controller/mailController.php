@@ -48,10 +48,12 @@ class mailController {
             if ($info[func] == "send") {
                 if ($_data != NULL) {
                     foreach ($_data as $key => $value) {
-                        $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
+                        $mail->SMTPSecure = 'ssl';
+                        $mail->SMTPAuth = true;
+                        $mail->Host = "activegelthailand.com";
                         $mail->Hostname = "activegelthailand.com";
-//                        $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-//                        $mail->Password = "P@ssw0rd1";
+                        $mail->Username = "noreply@activegelthailand.com";
+                        $mail->Password = "P@ssw0rd1";
                         $mail->Port = 465;
                         $mail->CharSet = 'utf-8';
                         $mail->From = "noreply@activegelthailand.com";
@@ -70,10 +72,12 @@ class mailController {
                     echo $_SESSION['cd_2001'];
                 }
             } else {
-                $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
+                $mail->SMTPSecure = 'ssl';
+                $mail->SMTPAuth = true;
+                $mail->Host = "activegelthailand.com";
                 $mail->Hostname = "activegelthailand.com";
-//                $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-//                $mail->Password = "P@ssw0rd1";
+                $mail->Username = "noreply@activegelthailand.com";
+                $mail->Password = "P@ssw0rd1";
                 $mail->Port = 465;
                 $mail->CharSet = 'utf-8';
                 $mail->From = "noreply@activegelthailand.com";

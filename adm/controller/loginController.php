@@ -51,10 +51,12 @@ class loginController {
                     $util->CopyTemplatedMailForgot("../email/Email_Forgot.html", "../email/Email_Forgot_Temp.html", $_data[$key]['s_firstname'], $_data[$key]['s_lastname'], $_data[$key]['s_user'], $_data[$key]['s_pass']);
                     $body = $mail->getFile('../email/Email_Forgot_Temp.html');
 
-                    $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
+                    $mail->SMTPSecure = 'ssl';
+                    $mail->Host = "activegelthailand.com";
+                    $mail->SMTPAuth = true;
                     $mail->Hostname = "activegelthailand.com";
-//                    $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-//                    $mail->Password = "P@ssw0rd1";
+                    $mail->Username = "noreply@activegelthailand.com";
+                    $mail->Password = "P@ssw0rd1";
                     $mail->Port = 465;
                     $mail->CharSet = 'utf-8';
                     $mail->From = "noreply@activegelthailand.com";
@@ -99,7 +101,7 @@ class loginController {
             return;
         }
 
-        if (strtoupper($info[captcha]) != strtoupper($_SESSION[captcha][code]) && $_SESSION[mode] == "signin") {
+        if (strtoupper($info[captcha]) != strtoupper($_SESSION[captcha][code]) && $info[mode] == "signin") {
             echo $_SESSION['cd_4004'];
             return;
         }
