@@ -4,7 +4,7 @@
 // HERE SET THE PATH TO THE FOLDERS FOR IMAGES AND AUDIO ON YOUR SERVER (RELATIVE TO THE ROOT OF YOUR WEBSITE ON SERVER)
 // 'img'=> '/biotec/manage/bio/templatedEmail/tmp_img/',
 $upload_dir = array(
- 'img'=> '/app/nagieos/email/tmp_img/',
+ 'img'=> '/adm/email/tmp_img/',
  'audio'=> '/audio/'
 );
 

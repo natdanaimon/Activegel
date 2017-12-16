@@ -22,12 +22,12 @@ switch ($info[func]) {
 class mailController {
 
     public function __construct() {
-        include '../../common/ConnectDB.php';
-        include '../../common/Utility.php';
-        include '../../common/Logs.php';
-        include '../../common/upload.php';
-        include '../../common/phpmailer.php';
-        include '../../service/customer/mailService.php';
+        include '../common/ConnectDB.php';
+        include '../common/Utility.php';
+        include '../common/Logs.php';
+        include '../common/upload.php';
+        include '../common/phpmailer.php';
+        include '../service/mailService.php';
     }
 
     public function send($info) {
@@ -38,8 +38,8 @@ class mailController {
             $db = new ConnectDB();
             $util = new Utility();
             $mail = new PHPMailer(TRUE);
-            $util->CopyTemplatedMail("../../email/Email.html", "../../email/Email_Temp.html", $info[detail]);
-            $body = $mail->getFile('../../email/Email_Temp.html');
+            $util->CopyTemplatedMail("../email/Email.html", "../email/Email_Temp.html", $info[detail]);
+            $body = $mail->getFile('../email/Email_Temp.html');
 
 
             $service = new mailService();
@@ -50,8 +50,8 @@ class mailController {
                     foreach ($_data as $key => $value) {
                         $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
                         $mail->Hostname = "activegelthailand.com";
-                        $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-                        $mail->Password = "P@ssw0rd1";
+//                        $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
+//                        $mail->Password = "P@ssw0rd1";
                         $mail->Port = 465;
                         $mail->CharSet = 'utf-8';
                         $mail->From = "noreply@activegelthailand.com";
@@ -61,10 +61,10 @@ class mailController {
                         $mail->AddAddress($_data[$key]['s_email']);
                         $mailcommit = $mail->Send();
                     }
-                    array_map('unlink', glob("../../email/tmp_img/*.jpg"));
-                    array_map('unlink', glob("../../email/tmp_img/*.JPG"));
-                    array_map('unlink', glob("../../email/tmp_img/*.png"));
-                    array_map('unlink', glob("../../email/tmp_img/*.PNG"));
+                    array_map('unlink', glob("../email/tmp_img/*.jpg"));
+                    array_map('unlink', glob("../email/tmp_img/*.JPG"));
+                    array_map('unlink', glob("../email/tmp_img/*.png"));
+                    array_map('unlink', glob("../email/tmp_img/*.PNG"));
                     echo $_SESSION['cd_0000'];
                 } else {
                     echo $_SESSION['cd_2001'];
@@ -72,8 +72,8 @@ class mailController {
             } else {
                 $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
                 $mail->Hostname = "activegelthailand.com";
-                $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-                $mail->Password = "P@ssw0rd1";
+//                $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
+//                $mail->Password = "P@ssw0rd1";
                 $mail->Port = 465;
                 $mail->CharSet = 'utf-8';
                 $mail->From = "noreply@activegelthailand.com";

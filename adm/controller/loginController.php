@@ -53,8 +53,8 @@ class loginController {
 
                     $mail->Host = "cpanel07wh.bkk1.cloud.z.com";
                     $mail->Hostname = "activegelthailand.com";
-                    $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
-                    $mail->Password = "P@ssw0rd1";
+//                    $mail->Username = "_mainaccount@88770823-88-20171213123136.webstarterz.com";
+//                    $mail->Password = "P@ssw0rd1";
                     $mail->Port = 465;
                     $mail->CharSet = 'utf-8';
                     $mail->From = "noreply@activegelthailand.com";

@@ -20,7 +20,7 @@ class Utility {
     protected $_locationRedirectPremissionUser = "index.php";
     protected $_locationRedirectPremissionAdmin = "index.php";
     protected $_limitPaging = 16;
-    protected $_email = "info@horgarage.com";
+    protected $_email = "info@activegelthailand.com";
 
     function getEmail() {
         return $this->_email;

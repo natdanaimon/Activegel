@@ -159,9 +159,9 @@ ACTIVEPAGES(2, 3);
         <!-- END QUICK NAV -->
 
         <script src="ckeditor/ckeditor.js"></script>
-        <?php $_SESSION["folder_upload"] = "sendmail" ?>
+        <?php // $_SESSION["folder_upload"] = "sendmail" ?>
         <script>
-                                                    CKEDITOR.replace('detail', {"filebrowserImageUploadUrl": "iaupload_all.php"});
+                                                    CKEDITOR.replace('detail', {"filebrowserImageUploadUrl": "iaupload.php"});
 
         </script>
 

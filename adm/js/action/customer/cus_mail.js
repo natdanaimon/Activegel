@@ -8,7 +8,7 @@ function save(func) {
     var formData = $("#form-action").serialize();
     $.ajax({
         type: 'POST',
-        url: 'controller/customer/mailController.php',
+        url: 'controller/mailController.php',
         data: formData,
         beforeSend: function ()
         {
