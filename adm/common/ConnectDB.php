@@ -3,12 +3,12 @@
 class ConnectDB {
 
     protected $_host = "localhost";
-//    protected $_user = "root";
-//    protected $_pass = "";
-//    protected $_dbname = "db_activegel";
-    protected $_user = "cp682482_root";
-    protected $_pass = "P@ssw0rd1";
-    protected $_dbname = "cp682482_activegel";
+    protected $_user = "root";
+    protected $_pass = "";
+    protected $_dbname = "db_activegel";
+//    protected $_user = "cp682482_root";
+//    protected $_pass = "P@ssw0rd1";
+//    protected $_dbname = "cp682482_activegel";
     protected $_conn;
     protected $_email_host = "0.0.0.0";
     protected $_email_port = "25";
