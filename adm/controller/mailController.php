@@ -48,7 +48,7 @@ class mailController {
             if ($info[func] == "send") {
                 if ($_data != NULL) {
                     foreach ($_data as $key => $value) {
-                        $mail->SMTPSecure = 'ssl';
+                        $mail->SMTPSecure = 'tls';
                         $mail->SMTPAuth = true;
                         $mail->Host = "activegelthailand.com";
                         $mail->Hostname = "activegelthailand.com";
@@ -72,7 +72,7 @@ class mailController {
                     echo $_SESSION['cd_2001'];
                 }
             } else {
-                $mail->SMTPSecure = 'ssl';
+                $mail->SMTPSecure = 'tls';
                 $mail->SMTPAuth = true;
                 $mail->Host = "activegelthailand.com";
                 $mail->Hostname = "activegelthailand.com";

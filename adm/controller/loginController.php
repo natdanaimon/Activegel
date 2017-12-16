@@ -51,7 +51,7 @@ class loginController {
                     $util->CopyTemplatedMailForgot("../email/Email_Forgot.html", "../email/Email_Forgot_Temp.html", $_data[$key]['s_firstname'], $_data[$key]['s_lastname'], $_data[$key]['s_user'], $_data[$key]['s_pass']);
                     $body = $mail->getFile('../email/Email_Forgot_Temp.html');
 
-                    $mail->SMTPSecure = 'ssl';
+                    $mail->SMTPSecure = 'tls';
                     $mail->Host = "activegelthailand.com";
                     $mail->SMTPAuth = true;
                     $mail->Hostname = "activegelthailand.com";
